@@ -9,6 +9,7 @@ import numpy as np
 #save file location
 save_path="C:/Users/RnD Workstation/Documents/CostReview/0519/"
 today_date="_0519"
+color_list=['#4472C4','#A5A5A5','#70AD47','#FFC000','#ED7D31','#6600CC','#FF66FF']
 
 ########################################## FL - BPA Entity ##########################################
 #change point
@@ -28,7 +29,7 @@ fig, ax = plt.subplots()
 fig.set_size_inches(15, 4)
 for i in range(len(graph_column)):
     grap_list=graph_data[[i]]
-    ax.plot(grap_list,linestyle='-',linewidth=1.0,label=graph_column[i],color="#{:06x}".format(random.randint(0, 0xFFFFFF))) # SVC
+    ax.plot(grap_list,linestyle='-',linewidth=1.0,label=graph_column[i],color=color_list[i]) # SVC
 # ax.set_title(graph_title,pad=0.2,loc='center',size="13",weight="800", family="sans-serif")
 ax.yaxis.tick_right()
 ax.legend()
@@ -55,7 +56,7 @@ fig, ax = plt.subplots()
 fig.set_size_inches(15, 4)
 for i in range(len(graph_column)):
     grap_list=graph_data[[i]]
-    ax.plot(grap_list,linestyle='-', label=graph_column[i],linewidth=1.0,color="#{:06x}".format(random.randint(0, 0xFFFFFF))) # SVC
+    ax.plot(grap_list,linestyle='-', label=graph_column[i],linewidth=1.0,color=color_list[i]) # SVC
 # ax.set_title(graph_title,pad=0.2,loc='center',size="13",weight="800", family="sans-serif")
 ax.yaxis.tick_right()
 ax.legend()
@@ -81,7 +82,7 @@ fig, ax = plt.subplots()
 fig.set_size_inches(15, 4)
 for i in range(len(graph_column)):
     grap_list=graph_data[[i]]
-    ax.plot(grap_list,linestyle='-', label=graph_column[i],linewidth=1.0,color="#{:06x}".format(random.randint(0, 0xFFFFFF))) # SVC
+    ax.plot(grap_list,linestyle='-', label=graph_column[i],linewidth=1.0,color=color_list[i]) # SVC
 # ax.set_title(graph_title,pad=0.2,loc='center',size="13",weight="800", family="sans-serif")
 ax.yaxis.tick_right()
 ax.legend()
@@ -107,7 +108,7 @@ fig, ax = plt.subplots()
 fig.set_size_inches(15, 4)
 for i in range(len(graph_column)):
     grap_list=graph_data[[i]]
-    ax.plot(grap_list,linestyle='-', label=graph_column[i],linewidth=1.0,color="#{:06x}".format(random.randint(0, 0xFFFFFF))) # SVC
+    ax.plot(grap_list,linestyle='-', label=graph_column[i],linewidth=1.0,color=color_list[i]) # SVC
 # ax.set_title(graph_title,pad=0.2,loc='center',size="13",weight="800", family="sans-serif")
 ax.yaxis.tick_right()
 ax.legend()
@@ -133,7 +134,7 @@ fig, ax = plt.subplots()
 fig.set_size_inches(15, 4)
 for i in range(len(graph_column)):
     grap_list=graph_data[[i]]
-    ax.plot(grap_list,linestyle='-', label=graph_column[i],linewidth=1.0,color="#{:06x}".format(random.randint(0, 0xFFFFFF))) # SVC
+    ax.plot(grap_list,linestyle='-', label=graph_column[i],linewidth=1.0,color=color_list[i]) # SVC
 # ax.set_title(graph_title,pad=0.2,loc='center',size="13",weight="800", family="sans-serif")
 ax.yaxis.tick_right()
 ax.legend()
@@ -159,7 +160,7 @@ fig, ax = plt.subplots()
 fig.set_size_inches(15, 4)
 for i in range(len(graph_column)):
     grap_list=graph_data[[i]]
-    ax.plot(grap_list,linestyle='-', label=graph_column[i],linewidth=1.0,color="#{:06x}".format(random.randint(0, 0xFFFFFF))) # SVC
+    ax.plot(grap_list,linestyle='-', label=graph_column[i],linewidth=1.0,color=color_list[i]) # SVC
 # ax.set_title(graph_title,pad=0.2,loc='center',size="13",weight="800", family="sans-serif")
 ax.yaxis.tick_right()
 ax.legend()

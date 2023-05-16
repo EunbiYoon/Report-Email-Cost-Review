@@ -25,7 +25,7 @@ msg['Bcc']='eunbi1.yoon@lge.com'
 
 #Subject 꾸미기
 msg['Subject']='Cost Review Report '+this_week
-msg.attach(MIMEText('<h3 style="font-family:sans-serif;">Dear all,</h3><h4 style="font-family:sans-serif; font-weight:500">Here is the Cost Review Report. Thanks,</h4>','html'))
+msg.attach(MIMEText('<h3 style="font-family:sans-serif;">Dear all,</h3><h4 style="font-family:sans-serif; font-weight:500">I would like to share this week cost review report. Please refer to the below and thank you,</h4>','html'))
 
 # graph file read
 with open(save_path+"FL_BPA_Entity"+today_date+'.png', 'rb') as f:
