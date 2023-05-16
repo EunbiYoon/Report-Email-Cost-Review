@@ -28,10 +28,12 @@ fig, ax = plt.subplots()
 fig.set_size_inches(15, 4)
 for i in range(len(graph_column)):
     grap_list=graph_data[[i]]
-    ax.plot(grap_list,linestyle='-', label=graph_column[i],linewidth=1.0,color="#{:06x}".format(random.randint(0, 0xFFFFFF))) # SVC
+    ax.plot(grap_list,linestyle='-',linewidth=1.0,label=graph_column[i],color="#{:06x}".format(random.randint(0, 0xFFFFFF))) # SVC
 # ax.set_title(graph_title,pad=0.2,loc='center',size="13",weight="800", family="sans-serif")
+ax.yaxis.tick_right()
 ax.legend()
 #그림 저장
+plt.tight_layout()
 plt.savefig(save_path+file_name)
 
 
@@ -57,6 +59,7 @@ for i in range(len(graph_column)):
 # ax.set_title(graph_title,pad=0.2,loc='center',size="13",weight="800", family="sans-serif")
 ax.legend()
 #그림 저장
+plt.tight_layout()
 plt.savefig(save_path+file_name)
 
 ########################################## DR - BPA Entity ##########################################
@@ -81,6 +84,7 @@ for i in range(len(graph_column)):
 # ax.set_title(graph_title,pad=0.2,loc='center',size="13",weight="800", family="sans-serif")
 ax.legend()
 #그림 저장
+plt.tight_layout()
 plt.savefig(save_path+file_name)
 
 ########################################## FL - PAC Entity ##########################################
@@ -105,6 +109,7 @@ for i in range(len(graph_column)):
 # ax.set_title(graph_title,pad=0.2,loc='center',size="13",weight="800", family="sans-serif")
 ax.legend()
 #그림 저장
+plt.tight_layout()
 plt.savefig(save_path+file_name)
 
 ########################################## TL - PAC Entity ##########################################
@@ -129,6 +134,7 @@ for i in range(len(graph_column)):
 # ax.set_title(graph_title,pad=0.2,loc='center',size="13",weight="800", family="sans-serif")
 ax.legend()
 #그림 저장
+plt.tight_layout()
 plt.savefig(save_path+file_name)
 
 ########################################## DR - PAC Entity ##########################################
@@ -153,5 +159,6 @@ for i in range(len(graph_column)):
 # ax.set_title(graph_title,pad=0.2,loc='center',size="13",weight="800", family="sans-serif")
 ax.legend()
 #그림 저장
+plt.tight_layout()
 plt.savefig(save_path+file_name)
 
