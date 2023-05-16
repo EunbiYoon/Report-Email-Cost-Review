@@ -6,15 +6,6 @@ from email.mime.multipart import MIMEMultipart
 from email.mime.application import MIMEApplication 
 from table import this_week, F_BPAE_html, T_BPAE_html, D_BPAE_html, F_PACE_html, T_PACE_html, D_PACE_html
 
-#read_excel for sending
-FL_BPAE_TABLE=pd.read_excel("C:/Users/RnD Workstation/Documents/CostReview/0519/BPAE_0519.xlsx", sheet_name="FL")
-TL_BPAE_TABLE=pd.read_excel("C:/Users/RnD Workstation/Documents/CostReview/0519/BPAE_0519.xlsx", sheet_name="TL")
-DR_BPAE_TABLE=pd.read_excel("C:/Users/RnD Workstation/Documents/CostReview/0519/BPAE_0519.xlsx", sheet_name="DR")
-
-FL_PACE_TABLE=pd.read_excel("C:/Users/RnD Workstation/Documents/CostReview/0519/PACE_0519.xlsx", sheet_name="FL")
-TL_PACE_TABLE=pd.read_excel("C:/Users/RnD Workstation/Documents/CostReview/0519/PACE_0519.xlsx", sheet_name="TL")
-DR_PACE_TABLE=pd.read_excel("C:/Users/RnD Workstation/Documents/CostReview/0519/PACE_0519.xlsx", sheet_name="DR")
-
 
 #html - table
 server = smtplib.SMTP('lgekrhqmh01.lge.com:25')
@@ -43,11 +34,11 @@ F_PACE_attach = MIMEText(F_PACE_html, "html")
 T_PACE_attach = MIMEText(T_PACE_html, "html")
 D_PACE_attach = MIMEText(D_PACE_html, "html")
 
-msg.attach(MIMEText('<h3 style="font-family:sans-serif;">Front Loader BPA Entity Trend Table</h3>'))
+msg.attach(MIMEText('<h3 style="font-family:sans-serif;">Front Loader BPA Entity Trend Table</h3>','html'))
 msg.attach(F_BPAE_attach)
-msg.attach(MIMEText('<h3 style="font-family:sans-serif;">Top Loader BPA Entity Trend Table</h3>'))
+msg.attach(MIMEText('<h3 style="font-family:sans-serif;">Top Loader BPA Entity Trend Table</h3>','html'))
 msg.attach(T_BPAE_attach)
-msg.attach(MIMEText('<h3 style="font-family:sans-serif;">Dryer BPA Entity Trend Table</h3>'))
+msg.attach(MIMEText('<h3 style="font-family:sans-serif;">Dryer BPA Entity Trend Table</h3>','html'))
 msg.attach(D_BPAE_attach)
 
 msg.attach(MIMEText('<h3 style="font-family:sans-serif;">Front Loader PAC Entity Trend Table</h3>','html'))
