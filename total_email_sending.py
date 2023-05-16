@@ -32,7 +32,7 @@ msg['Bcc']='eunbi1.yoon@lge.com'
 
 #Subject 꾸미기
 msg['Subject']='Cost Review Report '+this_week
-
+msg.attach(MIMEText('<h3 style="font-family:sans-serif;">Dear all,</h3><h4 style="font-family:sans-serif; font-weight:500">Here is the Cost Review Report. Thanks,</h4>','html'))
 
 # html table attach
 F_BPAE_attach = MIMEText(F_BPAE_html, "html")
@@ -43,18 +43,18 @@ F_PACE_attach = MIMEText(F_PACE_html, "html")
 T_PACE_attach = MIMEText(T_PACE_html, "html")
 D_PACE_attach = MIMEText(D_PACE_html, "html")
 
-msg.attach(MIMEText('Front Loader BPA Entity Trend Table'))
+msg.attach(MIMEText('<h3 style="font-family:sans-serif;">Front Loader BPA Entity Trend Table</h3>'))
 msg.attach(F_BPAE_attach)
-msg.attach(MIMEText('Top Loader BPA Entity Trend Table'))
+msg.attach(MIMEText('<h3 style="font-family:sans-serif;">Top Loader BPA Entity Trend Table</h3>'))
 msg.attach(T_BPAE_attach)
-msg.attach(MIMEText('Dryer BPA Entity Trend Table'))
+msg.attach(MIMEText('<h3 style="font-family:sans-serif;">Dryer BPA Entity Trend Table</h3>'))
 msg.attach(D_BPAE_attach)
 
-msg.attach(MIMEText('Front Loader PAC Entity Trend Table'))
+msg.attach(MIMEText('<h3 style="font-family:sans-serif;">Front Loader PAC Entity Trend Table</h3>','html'))
 msg.attach(F_PACE_attach)
-msg.attach(MIMEText('Top Loader PAC Entity Trend Table'))
+msg.attach(MIMEText('<h3 style="font-family:sans-serif;">Top Loader PAC Entity Trend Table</h3>','html'))
 msg.attach(T_PACE_attach)
-msg.attach(MIMEText('Dryer PAC Entity Trend Table'))
+msg.attach(MIMEText('<h3 style="font-family:sans-serif;">Dryer PAC Entity Trend Table</h3>','html'))
 msg.attach(D_PACE_attach)
 
 
