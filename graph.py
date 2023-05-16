@@ -57,6 +57,7 @@ for i in range(len(graph_column)):
     grap_list=graph_data[[i]]
     ax.plot(grap_list,linestyle='-', label=graph_column[i],linewidth=1.0,color="#{:06x}".format(random.randint(0, 0xFFFFFF))) # SVC
 # ax.set_title(graph_title,pad=0.2,loc='center',size="13",weight="800", family="sans-serif")
+ax.yaxis.tick_right()
 ax.legend()
 #그림 저장
 plt.tight_layout()
@@ -82,6 +83,7 @@ for i in range(len(graph_column)):
     grap_list=graph_data[[i]]
     ax.plot(grap_list,linestyle='-', label=graph_column[i],linewidth=1.0,color="#{:06x}".format(random.randint(0, 0xFFFFFF))) # SVC
 # ax.set_title(graph_title,pad=0.2,loc='center',size="13",weight="800", family="sans-serif")
+ax.yaxis.tick_right()
 ax.legend()
 #그림 저장
 plt.tight_layout()
@@ -107,6 +109,7 @@ for i in range(len(graph_column)):
     grap_list=graph_data[[i]]
     ax.plot(grap_list,linestyle='-', label=graph_column[i],linewidth=1.0,color="#{:06x}".format(random.randint(0, 0xFFFFFF))) # SVC
 # ax.set_title(graph_title,pad=0.2,loc='center',size="13",weight="800", family="sans-serif")
+ax.yaxis.tick_right()
 ax.legend()
 #그림 저장
 plt.tight_layout()
@@ -132,6 +135,7 @@ for i in range(len(graph_column)):
     grap_list=graph_data[[i]]
     ax.plot(grap_list,linestyle='-', label=graph_column[i],linewidth=1.0,color="#{:06x}".format(random.randint(0, 0xFFFFFF))) # SVC
 # ax.set_title(graph_title,pad=0.2,loc='center',size="13",weight="800", family="sans-serif")
+ax.yaxis.tick_right()
 ax.legend()
 #그림 저장
 plt.tight_layout()
@@ -157,6 +161,7 @@ for i in range(len(graph_column)):
     grap_list=graph_data[[i]]
     ax.plot(grap_list,linestyle='-', label=graph_column[i],linewidth=1.0,color="#{:06x}".format(random.randint(0, 0xFFFFFF))) # SVC
 # ax.set_title(graph_title,pad=0.2,loc='center',size="13",weight="800", family="sans-serif")
+ax.yaxis.tick_right()
 ax.legend()
 #그림 저장
 plt.tight_layout()

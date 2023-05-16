@@ -30,7 +30,29 @@ msg.attach(MIMEText('<h3 style="font-family:sans-serif;">Dear all,</h3><h4 style
 # graph file read
 with open(save_path+"FL_BPA_Entity"+today_date+'.png', 'rb') as f:
         img_data = f.read()
-image = MIMEImage(img_data, name=os.path.basename('FL Line Audit1.png'))
+image1 = MIMEImage(img_data, name=os.path.basename("FL_BPA_Entity"+today_date+'.png'))
+
+with open(save_path+"TL_BPA_Entity"+today_date+'.png', 'rb') as f:
+        img_data = f.read()
+image2 = MIMEImage(img_data, name=os.path.basename("TL_BPA_Entity"+today_date+'.png'))
+
+with open(save_path+"DR_BPA_Entity"+today_date+'.png', 'rb') as f:
+        img_data = f.read()
+image3 = MIMEImage(img_data, name=os.path.basename("DR_BPA_Entity"+today_date+'.png'))
+
+
+with open(save_path+"FL_PAC_Entity"+today_date+'.png', 'rb') as f:
+        img_data = f.read()
+image4 = MIMEImage(img_data, name=os.path.basename("FL_PAC_Entity"+today_date+'.png'))
+
+with open(save_path+"TL_PAC_Entity"+today_date+'.png', 'rb') as f:
+        img_data = f.read()
+image5 = MIMEImage(img_data, name=os.path.basename("TL_PAC_Entity"+today_date+'.png'))
+
+with open(save_path+"DR_PAC_Entity"+today_date+'.png', 'rb') as f:
+        img_data = f.read()
+image6 = MIMEImage(img_data, name=os.path.basename("DR_PAC_Entity"+today_date+'.png'))
+
 
 # html table attach
 F_BPAE_attach = MIMEText(F_BPAE_html, "html")
@@ -41,19 +63,28 @@ F_PACE_attach = MIMEText(F_PACE_html, "html")
 T_PACE_attach = MIMEText(T_PACE_html, "html")
 D_PACE_attach = MIMEText(D_PACE_html, "html")
 
-msg.attach(MIMEText('<h3 style="font-family:sans-serif;">Front Loader BPA Entity Trend</h3>','html'))
-msg.attach(image)
+msg.attach(MIMEText('<br/><h3 style="font-family:sans-serif;">Front Loader BPA Entity Trend</h3>','html'))
+msg.attach(image1)
 msg.attach(F_BPAE_attach)
-msg.attach(MIMEText('<h3 style="font-family:sans-serif;">Top Loader BPA Entity Trend</h3>','html'))
+
+msg.attach(MIMEText('<br/><h3 style="font-family:sans-serif;">Top Loader BPA Entity Trend</h3>','html'))
+msg.attach(image2)
 msg.attach(T_BPAE_attach)
-msg.attach(MIMEText('<h3 style="font-family:sans-serif;">Dryer BPA Entity Trend</h3>','html'))
+
+msg.attach(MIMEText('<br/><h3 style="font-family:sans-serif;">Dryer BPA Entity Trend</h3>','html'))
+msg.attach(image3)
 msg.attach(D_BPAE_attach)
 
-msg.attach(MIMEText('<h3 style="font-family:sans-serif;">Front Loader PAC Entity Trend</h3>','html'))
+msg.attach(MIMEText('<br/><h3 style="font-family:sans-serif;">Front Loader PAC Entity Trend</h3>','html'))
+msg.attach(image4)
 msg.attach(F_PACE_attach)
-msg.attach(MIMEText('<h3 style="font-family:sans-serif;">Top Loader PAC Entity Trend</h3>','html'))
+
+msg.attach(MIMEText('<br/><h3 style="font-family:sans-serif;">Top Loader PAC Entity Trend</h3>','html'))
+msg.attach(image5)
 msg.attach(T_PACE_attach)
-msg.attach(MIMEText('<h3 style="font-family:sans-serif;">Dryer PAC Entity Trend</h3>','html'))
+
+msg.attach(MIMEText('<br/><h3 style="font-family:sans-serif;">Dryer PAC Entity Trend</h3>','html'))
+msg.attach(image6)
 msg.attach(D_PACE_attach)
 
 
