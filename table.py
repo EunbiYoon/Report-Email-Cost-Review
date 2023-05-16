@@ -71,3 +71,13 @@ F_PACE_Merge.to_excel(pace_writer, sheet_name="FL")
 T_PACE_Merge.to_excel(pace_writer, sheet_name="TL")
 D_PACE_Merge.to_excel(pace_writer, sheet_name="DR")
 pace_writer.close()
+
+
+# change to html
+F_BPAE_html=F_BPAE_Merge.to_html()
+T_BPAE_html=T_BPAE_Merge.to_html()
+D_BPAE_html=D_BPAE_Merge.to_html()
+
+F_PACE_html=F_PACE_Merge.to_html()
+T_PACE_html=T_PACE_Merge.to_html()
+D_PACE_html=D_PACE_Merge.to_html()
