@@ -1,5 +1,9 @@
 import pandas as pd
 import openpyxl
+import datetime
+
+#This weeknum
+this_week="May 3rd Week"
 
 #read original data
 original_BPAE=pd.read_excel("C:/Users/RnD Workstation/Documents/CostReview/0512/BPAE_0512.xlsx", sheet_name="FL")
@@ -24,13 +28,10 @@ print(PACE)
 PACE["Confirmed\nRMC\nWith Rate\n(USD)"]=PACE["Confirmed\nRMC\nWith Rate\n(USD)"].astype(float).round(1)
 
 #Matching column with original data
-BPAE=BPAE.rename(columns={"Model.Suffix":"Tool"})
-PACE=PACE.rename(columns={"Model.Suffix":"Tool"})
-
+BPAE=BPAE.rename(columns={"Model.Suffix":"Tool","Confirmed\nRMC\nWith Rate\n(USD)":this_week})
+PACE=PACE.rename(columns={"Model.Suffix":"Tool","Confirmed\nRMC\nWith Rate\n(USD)":this_week})
 
 #merge two file with Model Suffix
 BPAE_Merge=pd.merge(original_BPAE,BPAE,how="inner",on="Tool")
 PACE_Merge=pd.merge(original_PACE,PACE,how="inner",on="Tool")
 
-print(BPAE_Merge)
-print(PACE_Merge)
