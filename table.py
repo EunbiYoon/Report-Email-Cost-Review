@@ -47,17 +47,6 @@ D_BPAE_Merge=pd.merge(D_original_BPAE,BPAE,how="inner",on="Tool")
 D_PACE_Merge=pd.merge(D_original_PACE,PACE,how="inner",on="Tool")
 
 
-# #set index 
-# F_BPAE_Merge.index=F_BPAE_Merge["Tool"]
-# F_PACE_Merge.index=F_PACE_Merge["Tool"]
-
-# T_BPAE_Merge.index=T_BPAE_Merge["Tool"]
-# T_PACE_Merge.index=T_PACE_Merge["Tool"]
-
-# D_BPAE_Merge.index=D_BPAE_Merge["Tool"]
-# D_PACE_Merge.index=D_PACE_Merge["Tool"]
-
-
 #write excel
 bpae_writer = pd.ExcelWriter("C:/Users/RnD Workstation/Documents/CostReview/0519/BPAE_0519.xlsx", engine="xlsxwriter")
 pace_writer = pd.ExcelWriter("C:/Users/RnD Workstation/Documents/CostReview/0519/PACE_0519.xlsx", engine="xlsxwriter")
