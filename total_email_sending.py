@@ -15,7 +15,6 @@ FL_PACE_TABLE=pd.read_excel("C:/Users/RnD Workstation/Documents/CostReview/0519/
 TL_PACE_TABLE=pd.read_excel("C:/Users/RnD Workstation/Documents/CostReview/0519/PACE_0519.xlsx", sheet_name="TL")
 DR_PACE_TABLE=pd.read_excel("C:/Users/RnD Workstation/Documents/CostReview/0519/PACE_0519.xlsx", sheet_name="DR")
 
-print(TL_BPAE_TABLE)
 
 #html - table
 server = smtplib.SMTP('lgekrhqmh01.lge.com:25')
