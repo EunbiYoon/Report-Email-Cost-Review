@@ -39,12 +39,23 @@ F_BPAE_attach = MIMEText(F_BPAE_html, "html")
 T_BPAE_attach = MIMEText(T_BPAE_html, "html")
 D_BPAE_attach = MIMEText(D_BPAE_html, "html")
 
-msg.attach(MIMEText(''))
+F_PACE_attach = MIMEText(F_PACE_html, "html")
+T_PACE_attach = MIMEText(T_PACE_html, "html")
+D_PACE_attach = MIMEText(D_PACE_html, "html")
+
+msg.attach(MIMEText('Front Loader BPA Entity Trend Table'))
 msg.attach(F_BPAE_attach)
-msg.attach(MIMEText(''))
+msg.attach(MIMEText('Top Loader BPA Entity Trend Table'))
 msg.attach(T_BPAE_attach)
-msg.attach(MIMEText(''))
+msg.attach(MIMEText('Dryer BPA Entity Trend Table'))
 msg.attach(D_BPAE_attach)
+
+msg.attach(MIMEText('Front Loader PAC Entity Trend Table'))
+msg.attach(F_PACE_attach)
+msg.attach(MIMEText('Top Loader PAC Entity Trend Table'))
+msg.attach(T_PACE_attach)
+msg.attach(MIMEText('Dryer PAC Entity Trend Table'))
+msg.attach(D_PACE_attach)
 
 
 #첨부 파일1
