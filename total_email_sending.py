@@ -67,23 +67,23 @@ msg.attach(MIMEText('<br/><h3 style="font-family:sans-serif;">Front Loader BPA E
 msg.attach(image1)
 msg.attach(F_BPAE_attach)
 
-msg.attach(MIMEText('<br/><h3 style="font-family:sans-serif;">Top Loader BPA Entity Trend</h3>','html'))
+msg.attach(MIMEText('<br/><br/><h3 style="font-family:sans-serif;">Top Loader BPA Entity Trend</h3>','html'))
 msg.attach(image2)
 msg.attach(T_BPAE_attach)
 
-msg.attach(MIMEText('<br/><h3 style="font-family:sans-serif;">Dryer BPA Entity Trend</h3>','html'))
+msg.attach(MIMEText('<br/><br/><h3 style="font-family:sans-serif;">Dryer BPA Entity Trend</h3>','html'))
 msg.attach(image3)
 msg.attach(D_BPAE_attach)
 
-msg.attach(MIMEText('<br/><h3 style="font-family:sans-serif;">Front Loader PAC Entity Trend</h3>','html'))
+msg.attach(MIMEText('<br/><br/><h3 style="font-family:sans-serif;">Front Loader PAC Entity Trend</h3>','html'))
 msg.attach(image4)
 msg.attach(F_PACE_attach)
 
-msg.attach(MIMEText('<br/><h3 style="font-family:sans-serif;">Top Loader PAC Entity Trend</h3>','html'))
+msg.attach(MIMEText('<br/><br/><h3 style="font-family:sans-serif;">Top Loader PAC Entity Trend</h3>','html'))
 msg.attach(image5)
 msg.attach(T_PACE_attach)
 
-msg.attach(MIMEText('<br/><h3 style="font-family:sans-serif;">Dryer PAC Entity Trend</h3>','html'))
+msg.attach(MIMEText('<br/><br/><h3 style="font-family:sans-serif;">Dryer PAC Entity Trend</h3>','html'))
 msg.attach(image6)
 msg.attach(D_PACE_attach)
 
