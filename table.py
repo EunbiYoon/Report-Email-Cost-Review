@@ -55,18 +55,14 @@ D_BPAE_Merge.index=range(1,len(D_BPAE_Merge)+1)
 D_PACE_Merge.index=range(1,len(D_PACE_Merge)+1)
 
 #write excel
-bpae_writer = pd.ExcelWriter("C:/Users/RnD Workstation/Documents/CostReview/0519/BPAE_0519.xlsx", engine="xlsxwriter")
-pace_writer = pd.ExcelWriter("C:/Users/RnD Workstation/Documents/CostReview/0519/PACE_0519.xlsx", engine="xlsxwriter")
-
-F_BPAE_Merge.to_excel(bpae_writer, sheet_name="FL")
-T_BPAE_Merge.to_excel(bpae_writer, sheet_name="TL")
-D_BPAE_Merge.to_excel(bpae_writer, sheet_name="DR")
-bpae_writer.close()
-
-F_PACE_Merge.to_excel(pace_writer, sheet_name="FL")
-T_PACE_Merge.to_excel(pace_writer, sheet_name="TL")
-D_PACE_Merge.to_excel(pace_writer, sheet_name="DR")
-pace_writer.close()
+file_writer = pd.ExcelWriter("C:/Users/RnD Workstation/Documents/CostReview/0519/Cost Review_0519.xlsx", engine="xlsxwriter")
+F_BPAE_Merge.to_excel(file_writer, sheet_name="FL_BPA")
+T_BPAE_Merge.to_excel(file_writer, sheet_name="TL_BPA")
+D_BPAE_Merge.to_excel(file_writer, sheet_name="DR_BPA")
+F_PACE_Merge.to_excel(file_writer, sheet_name="FL_PAC")
+T_PACE_Merge.to_excel(file_writer, sheet_name="TL_PAC")
+D_PACE_Merge.to_excel(file_writer, sheet_name="DR_PAC")
+file_writer.close()
 
 
 # change to html -> table & border
