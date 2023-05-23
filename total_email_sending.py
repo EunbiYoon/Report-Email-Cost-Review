@@ -19,15 +19,15 @@ msg=MIMEMultipart()
 
 # 수신자 발신자 지정
 msg['From']='eunbi1.yoon@lge.com'
-# msg['To']='catalina.manolache@lge.com'
+msg['To']='catalina.manolache@lge.com'
 # msg['To']='iggeun.kwon@lge.com'
 # msg['Cc']='janine.williams@lge.com, karina1.beveridge@lge.com, kitae3.park@lge.com, soyoung1.an@lge.com, soyoon1.kim@lge.com, wolyong.ha@lge.com, grace.hwang@lge.com, tg.kim@lge.com, seongju.yu@lge.com, minhyoung.sun@lge.com, jongseop.kim@lge.com, richard.song@lge.com, gilnam.lee@lge.com, jacey.jung@lge.com, 312718@lge.com'
 msg['Bcc']='eunbi1.yoon@lge.com'
 
 #Subject 꾸미기
 msg['Subject']='Cost Review Report '+this_week
-# msg.attach(MIMEText('<h3 style="font-family:sans-serif;">Dear all,</h3><h4 style="font-family:sans-serif; font-weight:500">I would like to share this week cost review report and detailed informations are in below website.<br/>You can access website from CloudPC or LG wifi for security purpose. <a href="http://10.225.2.85">http://10.225.2.85</a></h4>','html'))
-msg.attach(MIMEText('<h3 style="font-family:sans-serif;">Dear Catalina,</h3><h4 style="font-family:sans-serif; font-weight:500">Please check May W4 result and I will share soon the item with this report.</h4>','html'))
+# msg.attach(MIMEText('<h4 style="font-family:sans-serif; font-weight:500">Dear all,<br/>I would like to share this week cost review report and detailed informations are in below website.<br/>You can access website from CloudPC or LG wifi for security purpose. <a href="http://10.225.2.85">http://10.225.2.85</a></h4>','html'))
+msg.attach(MIMEText('<h3 style="font-family:sans-serif;">[Attached Correct File]<br/>Dear Catalina,</h3><h4 style="font-family:sans-serif; font-weight:500">Please check May W4 GRAPH data and item and I showed +-0.5 data in the item :).</h4>','html'))
 
 
 # graph file read

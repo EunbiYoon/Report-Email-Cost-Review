@@ -214,39 +214,45 @@ FPI_P=pd.read_excel("C:/Users/RnD Workstation/Documents/CostReview/0519/Cost Rev
 TPI_P=pd.read_excel("C:/Users/RnD Workstation/Documents/CostReview/0519/Cost Review_0519.xlsx", sheet_name="TL_PAC_Item")
 DPI_P=pd.read_excel("C:/Users/RnD Workstation/Documents/CostReview/0519/Cost Review_0519.xlsx", sheet_name="DR_PAC_Item")
 
-FBI_P.index=FBI_P["Index"]
-FBI_P=FBI_P.drop(["Index"], axis=1)
+FBI_P.index=FBI_P["Unnamed: 0"]
+FBI_P=FBI_P.drop(["Unnamed: 0"], axis=1)
 FBI_P=FBI_P.drop(["Total"], axis=0)
+FBI_P=FBI_P.rename_axis(None)
 FBI_P_1=FBI_P[['Increase','VI','Month']].dropna()
 FBI_P_2=FBI_P[['Decrease','VI.1','Month.1']].dropna()
 
-TBI_P.index=TBI_P["Index"]
-TBI_P=TBI_P.drop(["Index"], axis=1)
+TBI_P.index=TBI_P["Unnamed: 0"]
+TBI_P=TBI_P.drop(["Unnamed: 0"], axis=1)
 TBI_P=TBI_P.drop(["Total"], axis=0)
+TBI_P=TBI_P.rename_axis(None)
 TBI_P_1=TBI_P[['Increase','VI','Month']].dropna()
 TBI_P_2=TBI_P[['Decrease','VI.1','Month.1']].dropna()
 
-DBI_P.index=DBI_P["Index"]
-DBI_P=DBI_P.drop(["Index"], axis=1)
+DBI_P.index=DBI_P["Unnamed: 0"]
+DBI_P=DBI_P.drop(["Unnamed: 0"], axis=1)
 DBI_P=DBI_P.drop(["Total"], axis=0)
+DBI_P=DBI_P.rename_axis(None)
 DBI_P_1=DBI_P[['Increase','VI','Month']].dropna()
 DBI_P_2=DBI_P[['Decrease','VI.1','Month.1']].dropna()
 
-FPI_P.index=FPI_P["Index"]
-FPI_P=FPI_P.drop(["Index"], axis=1)
+FPI_P.index=FPI_P["Unnamed: 0"]
+FPI_P=FPI_P.drop(["Unnamed: 0"], axis=1)
 FPI_P=FPI_P.drop(["Total"], axis=0)
+FPI_P=FPI_P.rename_axis(None)
 FPI_P_1=FPI_P[['Increase','VI','Month']].dropna()
 FPI_P_2=FPI_P[['Decrease','VI.1','Month.1']].dropna()
 
-TPI_P.index=TPI_P["Index"]
-TPI_P=TPI_P.drop(["Index"], axis=1)
+TPI_P.index=TPI_P["Unnamed: 0"]
+TPI_P=TPI_P.drop(["Unnamed: 0"], axis=1)
 TPI_P=TPI_P.drop(["Total"], axis=0)
+TPI_P=TPI_P.rename_axis(None)
 TPI_P_1=TPI_P[['Increase','VI','Month']].dropna()
 TPI_P_2=TPI_P[['Decrease','VI.1','Month.1']].dropna()
 
-DPI_P.index=DPI_P["Index"]
-DPI_P=DPI_P.drop(["Index"], axis=1)
+DPI_P.index=DPI_P["Unnamed: 0"]
+DPI_P=DPI_P.drop(["Unnamed: 0"], axis=1)
 DPI_P=DPI_P.drop(["Total"], axis=0)
+DPI_P=DPI_P.rename_axis(None)
 DPI_P_1=DPI_P[['Increase','VI','Month']].dropna()
 DPI_P_2=DPI_P[['Decrease','VI.1','Month.1']].dropna()
 
@@ -412,15 +418,36 @@ FPI_merge = FPI_merge.replace(np.nan, '', regex=True)
 TPI_merge = TPI_merge.replace(np.nan, '', regex=True)
 DPI_merge = DPI_merge.replace(np.nan, '', regex=True)
 
-print(FBI_merge)
+#column name change vi.1 and month.1
+FBI_merge=FBI_merge.rename(columns={"VI.1": "VI", "Month.1": "Month"})
+TBI_merge=TBI_merge.rename(columns={"VI.1": "VI", "Month.1": "Month"})
+DBI_merge=DBI_merge.rename(columns={"VI.1": "VI", "Month.1": "Month"})
+FPI_merge=FPI_merge.rename(columns={"VI.1": "VI", "Month.1": "Month"})
+TPI_merge=TPI_merge.rename(columns={"VI.1": "VI", "Month.1": "Month"})
+DPI_merge=DPI_merge.rename(columns={"VI.1": "VI", "Month.1": "Month"})
+
+
 ############################ Write excel ############################  
 file_writer = pd.ExcelWriter("C:/Users/RnD Workstation/Documents/CostReview/0526/Cost Review_0526.xlsx", engine="xlsxwriter")
+
 F_BPAE_Merge.to_excel(file_writer, sheet_name="FL_BPA")
+FBI_merge.to_excel(file_writer, sheet_name="FL_BPA_Item")
+
 T_BPAE_Merge.to_excel(file_writer, sheet_name="TL_BPA")
+TBI_merge.to_excel(file_writer, sheet_name="TL_BPA_Item")
+
 D_BPAE_Merge.to_excel(file_writer, sheet_name="DR_BPA")
+DBI_merge.to_excel(file_writer, sheet_name="DR_BPA_Item")
+
 F_PACE_Merge.to_excel(file_writer, sheet_name="FL_PAC")
+FPI_merge.to_excel(file_writer, sheet_name="FL_PAC_Item")
+
 T_PACE_Merge.to_excel(file_writer, sheet_name="TL_PAC")
+TPI_merge.to_excel(file_writer, sheet_name="TL_PAC_Item")
+
 D_PACE_Merge.to_excel(file_writer, sheet_name="DR_PAC")
+DPI_merge.to_excel(file_writer, sheet_name="DL_PAC_Item")
+
 file_writer.close()
 
 ############################ html  ############################  
@@ -447,12 +474,12 @@ F_PACE_html=F_PACE_html.replace('<tr style="text-align: right;">','<tr style="te
 T_PACE_html=T_PACE_html.replace('<tr style="text-align: right;">','<tr style="text-align: center; background-color:rgb(238, 238, 238);">')
 D_PACE_html=D_PACE_html.replace('<tr style="text-align: right;">','<tr style="text-align: center; background-color:rgb(238, 238, 238);">')
 
-FBI_html=FBI_html.replace('<tr style="text-align: right;">','<tr style="text-align: center; background-color:rgb(192, 223, 231);">')
-TBI_html=TBI_html.replace('<tr style="text-align: right;">','<tr style="text-align: center; background-color:rgb(192, 223, 231);">')
-DBI_html=DBI_html.replace('<tr style="text-align: right;">','<tr style="text-align: center; background-color:rgb(192, 223, 231);">')
-FPI_html=FPI_html.replace('<tr style="text-align: right;">','<tr style="text-align: center; background-color:rgb(192, 223, 231);">')
-TPI_html=TPI_html.replace('<tr style="text-align: right;">','<tr style="text-align: center; background-color:rgb(192, 223, 231);">')
-DPI_html=DPI_html.replace('<tr style="text-align: right;">','<tr style="text-align: center; background-color:rgb(192, 223, 231);">')
+FBI_html=FBI_html.replace('<tr style="text-align: right;">','<tr style="text-align: center; background-color:rgb(221,254,255);">')
+TBI_html=TBI_html.replace('<tr style="text-align: right;">','<tr style="text-align: center; background-color:rgb(221,254,255);">')
+DBI_html=DBI_html.replace('<tr style="text-align: right;">','<tr style="text-align: center; background-color:rgb(221,254,255);">')
+FPI_html=FPI_html.replace('<tr style="text-align: right;">','<tr style="text-align: center; background-color:rgb(221,254,255);">')
+TPI_html=TPI_html.replace('<tr style="text-align: right;">','<tr style="text-align: center; background-color:rgb(221,254,255);">')
+DPI_html=DPI_html.replace('<tr style="text-align: right;">','<tr style="text-align: center; background-color:rgb(221,254,255);">')
 
 
 # row color & padding
@@ -462,12 +489,12 @@ D_BPAE_html=D_BPAE_html.replace('<th>','<th style="text-align: center; backgroun
 F_PACE_html=F_PACE_html.replace('<th>','<th style="text-align: center; background-color:rgb(238, 238, 238); padding:5px;">')
 T_PACE_html=T_PACE_html.replace('<th>','<th style="text-align: center; background-color:rgb(238, 238, 238); padding:5px;">')
 D_PACE_html=D_PACE_html.replace('<th>','<th style="text-align: center; background-color:rgb(238, 238, 238); padding:5px;">')
-FBI_html=FBI_html.replace('<th>','<th style="text-align: center; background-color:rgb(192, 223, 231); padding:5px;">')
-TBI_html=TBI_html.replace('<th>','<th style="text-align: center; background-color:rgb(192, 223, 231); padding:5px;">')
-DBI_html=DBI_html.replace('<th>','<th style="text-align: center; background-color:rgb(192, 223, 231); padding:5px;">')
-FPI_html=FPI_html.replace('<th>','<th style="text-align: center; background-color:rgb(192, 223, 231); padding:5px;">')
-TPI_html=TPI_html.replace('<th>','<th style="text-align: center; background-color:rgb(192, 223, 231); padding:5px;">')
-DPI_html=DPI_html.replace('<th>','<th style="text-align: center; background-color:rgb(192, 223, 231); padding:5px;">')
+FBI_html=FBI_html.replace('<th>','<th style="text-align: center; background-color:rgb(221,254,255); padding:5px;">')
+TBI_html=TBI_html.replace('<th>','<th style="text-align: center; background-color:rgb(221,254,255); padding:5px;">')
+DBI_html=DBI_html.replace('<th>','<th style="text-align: center; background-color:rgb(221,254,255); padding:5px;">')
+FPI_html=FPI_html.replace('<th>','<th style="text-align: center; background-color:rgb(221,254,255); padding:5px;">')
+TPI_html=TPI_html.replace('<th>','<th style="text-align: center; background-color:rgb(221,254,255); padding:5px;">')
+DPI_html=DPI_html.replace('<th>','<th style="text-align: center; background-color:rgb(221,254,255); padding:5px;">')
 
 
 # model, tool
