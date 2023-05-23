@@ -19,13 +19,16 @@ msg=MIMEMultipart()
 
 # 수신자 발신자 지정
 msg['From']='eunbi1.yoon@lge.com'
+msg['To']='catalina.manolache@lge.com'
 # msg['To']='iggeun.kwon@lge.com'
 # msg['Cc']='janine.williams@lge.com, karina1.beveridge@lge.com, kitae3.park@lge.com, soyoung1.an@lge.com, soyoon1.kim@lge.com, wolyong.ha@lge.com, grace.hwang@lge.com, tg.kim@lge.com, seongju.yu@lge.com, minhyoung.sun@lge.com, jongseop.kim@lge.com, richard.song@lge.com, gilnam.lee@lge.com, jacey.jung@lge.com, 312718@lge.com'
 msg['Bcc']='eunbi1.yoon@lge.com'
 
 #Subject 꾸미기
 msg['Subject']='Cost Review Report '+this_week
-msg.attach(MIMEText('<h3 style="font-family:sans-serif;">Dear all,</h3><h4 style="font-family:sans-serif; font-weight:500">I would like to share this week cost review report. Please refer to the below and thank you,</h4>','html'))
+# msg.attach(MIMEText('<h3 style="font-family:sans-serif;">Dear all,</h3><h4 style="font-family:sans-serif; font-weight:500">I would like to share this week cost review report and detailed informations are in below website.<br/>You can access website from CloudPC or LG wifi for security purpose. <a href="http://10.225.2.85">http://10.225.2.85</a></h4>','html'))
+msg.attach(MIMEText('<h3 style="font-family:sans-serif;">Dear Catalina,</h3><h4 style="font-family:sans-serif; font-weight:500">Please check May W4 result and I will share soon the item with this report.</h4>','html'))
+
 
 # graph file read
 with open(save_path+"FL_BPA_Entity"+today_date+'.png', 'rb') as f:
@@ -89,19 +92,13 @@ msg.attach(D_PACE_attach)
 
 
 #첨부 파일1
-etcFileName='BPA_Entity_0519.xlsx'
-with open("C:/Users/RnD Workstation/Documents/CostReview/0519/BPAE_0519.xlsx", 'rb') as etcFD : 
+etcFileName='Cost Review_0526.xlsx'
+with open("C:/Users/RnD Workstation/Documents/CostReview/0526/Cost Review_0526.xlsx", 'rb') as etcFD : 
     etcPart = MIMEApplication( etcFD.read() )
     #첨부파일의 정보를 헤더로 추가
     etcPart.add_header('Content-Disposition','attachment', filename=etcFileName)
     msg.attach(etcPart)
-#첨부 파일2
-etcFileName='PAC_Entity_0519.xlsx'
-with open("C:/Users/RnD Workstation/Documents/CostReview/0519/PACE_0519.xlsx", 'rb') as etcFD : 
-    etcPart = MIMEApplication( etcFD.read() )
-    #첨부파일의 정보를 헤더로 추가
-    etcPart.add_header('Content-Disposition','attachment', filename=etcFileName)
-    msg.attach(etcPart)
+
 
 #메세지 보내고 확인하기
 server.send_message(msg)
