@@ -1,6 +1,7 @@
 import pandas as pd
 import openpyxl
 import datetime
+import numpy as np
 
 #This weeknum
 this_week="23.05 W4"
@@ -353,12 +354,65 @@ FPI_merge = pd.concat([FPI_P_1, FPI_P_2], axis=1)
 TPI_merge = pd.concat([TPI_P_1, TPI_P_2], axis=1)
 DPI_merge = pd.concat([DPI_P_1, DPI_P_2], axis=1)
 
+#Total value
+FBI_sum=FBI_merge.sum()
+FBI_merge.at["total","VI"]=FBI_sum["VI"]
+FBI_merge.at["total","VI.1"]=FBI_sum["VI.1"]
+
+TBI_sum=TBI_merge.sum()
+TBI_merge.at["total","VI"]=TBI_sum["VI"]
+TBI_merge.at["total","VI.1"]=TBI_sum["VI.1"]
+
+DBI_sum=DBI_merge.sum()
+DBI_merge.at["total","VI"]=DBI_sum["VI"]
+DBI_merge.at["total","VI.1"]=DBI_sum["VI.1"]
+
+FPI_sum=FPI_merge.sum()
+FPI_merge.at["total","VI"]=FPI_sum["VI"]
+FPI_merge.at["total","VI.1"]=FPI_sum["VI.1"]
+
+TPI_sum=TPI_merge.sum()
+TPI_merge.at["total","VI"]=TPI_sum["VI"]
+TPI_merge.at["total","VI.1"]=TPI_sum["VI.1"]
+
+DPI_sum=DPI_merge.sum()
+DPI_merge.at["total","VI"]=DPI_sum["VI"]
+DPI_merge.at["total","VI.1"]=DPI_sum["VI.1"]
+
+#round2
+FBI_merge=FBI_merge.round(2)
+TBI_merge=TBI_merge.round(2)
+DBI_merge=DBI_merge.round(2)
+FPI_merge=FPI_merge.round(2)
+TPI_merge=TPI_merge.round(2)
+DBI_merge=DBI_merge.round(2)
+
+# #delete index column
+# FBI_merge=pd.DataFrame(FBI_merge)
+# print(FBI_merge)
+# TBI_merge=TBI_merge.reset_index(range(1,len(TBI_merge)+1))
+# DBI_merge=DBI_merge.reset_index(range(1,len(DBI_merge)+1))
+# FPI_merge=FPI_merge.reset_index(range(1,len(FPI_merge)+1))
+# TPI_merge=TPI_merge.reset_index(range(1,len(TPI_merge)+1))
+# DPI_merge=DPI_merge.reset_index(range(1,len(DPI_merge)+1))
+
+# #delete index column
+# FBI_merge=FBI_merge.drop(["Index"],axis=1)
+# TBI_merge=TBI_merge.drop(["Index"],axis=1)
+# DBI_merge=DBI_merge.drop(["Index"],axis=1)
+# FPI_merge=FPI_merge.drop(["Index"],axis=1)
+# TPI_merge=TPI_merge.drop(["Index"],axis=1)
+# DPI_merge=DPI_merge.drop(["Index"],axis=1)
+
+#nan -> blank
+FBI_merge = FBI_merge.replace(np.nan, '', regex=True)
+TBI_merge = TBI_merge.replace(np.nan, '', regex=True)
+DBI_merge = DBI_merge.replace(np.nan, '', regex=True)
+FPI_merge = FPI_merge.replace(np.nan, '', regex=True)
+TPI_merge = TPI_merge.replace(np.nan, '', regex=True)
+DPI_merge = DPI_merge.replace(np.nan, '', regex=True)
+
 print(FBI_merge)
-print(TBI_merge)
-print(DBI_merge)
-print(FPI_merge)
-print(TPI_merge)
-print(DBI_merge)
 ############################ Write excel ############################  
 file_writer = pd.ExcelWriter("C:/Users/RnD Workstation/Documents/CostReview/0526/Cost Review_0526.xlsx", engine="xlsxwriter")
 F_BPAE_Merge.to_excel(file_writer, sheet_name="FL_BPA")
@@ -377,6 +431,13 @@ D_BPAE_html=D_BPAE_Merge.to_html().replace('<table border="1"','<table border="1
 F_PACE_html=F_PACE_Merge.to_html().replace('<table border="1"','<table border="1" style="border:1px solid rgb(188, 188, 188); border-collapse:collapse; text-align:center;font-family:sans-serif;"')
 T_PACE_html=T_PACE_Merge.to_html().replace('<table border="1"','<table border="1" style="border:1px solid rgb(188, 188, 188); border-collapse:collapse; text-align:center;font-family:sans-serif;"')
 D_PACE_html=D_PACE_Merge.to_html().replace('<table border="1"','<table border="1" style="border:1px solid rgb(188, 188, 188); border-collapse:collapse; text-align:center;font-family:sans-serif;"')
+FBI_html=FBI_merge.to_html().replace('<table border="1"','<table border="1" style="border:1px solid rgb(188, 188, 188); border-collapse:collapse; text-align:center;font-family:sans-serif;"')
+TBI_html=TBI_merge.to_html().replace('<table border="1"','<table border="1" style="border:1px solid rgb(188, 188, 188); border-collapse:collapse; text-align:center;font-family:sans-serif;"')
+DBI_html=DBI_merge.to_html().replace('<table border="1"','<table border="1" style="border:1px solid rgb(188, 188, 188); border-collapse:collapse; text-align:center;font-family:sans-serif;"')
+FPI_html=FPI_merge.to_html().replace('<table border="1"','<table border="1" style="border:1px solid rgb(188, 188, 188); border-collapse:collapse; text-align:center;font-family:sans-serif;"')
+TPI_html=TPI_merge.to_html().replace('<table border="1"','<table border="1" style="border:1px solid rgb(188, 188, 188); border-collapse:collapse; text-align:center;font-family:sans-serif;"')
+DPI_html=DPI_merge.to_html().replace('<table border="1"','<table border="1" style="border:1px solid rgb(188, 188, 188); border-collapse:collapse; text-align:center;font-family:sans-serif;"')
+
 
 # text align center & column color
 F_BPAE_html=F_BPAE_html.replace('<tr style="text-align: right;">','<tr style="text-align: center; background-color:rgb(238, 238, 238);">')
@@ -386,6 +447,14 @@ F_PACE_html=F_PACE_html.replace('<tr style="text-align: right;">','<tr style="te
 T_PACE_html=T_PACE_html.replace('<tr style="text-align: right;">','<tr style="text-align: center; background-color:rgb(238, 238, 238);">')
 D_PACE_html=D_PACE_html.replace('<tr style="text-align: right;">','<tr style="text-align: center; background-color:rgb(238, 238, 238);">')
 
+FBI_html=FBI_html.replace('<tr style="text-align: right;">','<tr style="text-align: center; background-color:rgb(192, 223, 231);">')
+TBI_html=TBI_html.replace('<tr style="text-align: right;">','<tr style="text-align: center; background-color:rgb(192, 223, 231);">')
+DBI_html=DBI_html.replace('<tr style="text-align: right;">','<tr style="text-align: center; background-color:rgb(192, 223, 231);">')
+FPI_html=FPI_html.replace('<tr style="text-align: right;">','<tr style="text-align: center; background-color:rgb(192, 223, 231);">')
+TPI_html=TPI_html.replace('<tr style="text-align: right;">','<tr style="text-align: center; background-color:rgb(192, 223, 231);">')
+DPI_html=DPI_html.replace('<tr style="text-align: right;">','<tr style="text-align: center; background-color:rgb(192, 223, 231);">')
+
+
 # row color & padding
 F_BPAE_html=F_BPAE_html.replace('<th>','<th style="text-align: center; background-color:rgb(238, 238, 238); padding:5px;">')
 T_BPAE_html=T_BPAE_html.replace('<th>','<th style="text-align: center; background-color:rgb(238, 238, 238); padding:5px;">')
@@ -393,6 +462,13 @@ D_BPAE_html=D_BPAE_html.replace('<th>','<th style="text-align: center; backgroun
 F_PACE_html=F_PACE_html.replace('<th>','<th style="text-align: center; background-color:rgb(238, 238, 238); padding:5px;">')
 T_PACE_html=T_PACE_html.replace('<th>','<th style="text-align: center; background-color:rgb(238, 238, 238); padding:5px;">')
 D_PACE_html=D_PACE_html.replace('<th>','<th style="text-align: center; background-color:rgb(238, 238, 238); padding:5px;">')
+FBI_html=FBI_html.replace('<th>','<th style="text-align: center; background-color:rgb(192, 223, 231); padding:5px;">')
+TBI_html=TBI_html.replace('<th>','<th style="text-align: center; background-color:rgb(192, 223, 231); padding:5px;">')
+DBI_html=DBI_html.replace('<th>','<th style="text-align: center; background-color:rgb(192, 223, 231); padding:5px;">')
+FPI_html=FPI_html.replace('<th>','<th style="text-align: center; background-color:rgb(192, 223, 231); padding:5px;">')
+TPI_html=TPI_html.replace('<th>','<th style="text-align: center; background-color:rgb(192, 223, 231); padding:5px;">')
+DPI_html=DPI_html.replace('<th>','<th style="text-align: center; background-color:rgb(192, 223, 231); padding:5px;">')
+
 
 # model, tool
 F_BPAE_html=F_BPAE_html.replace('<th>Tool</th>','<th style="background-color: aqua;">Tool</th>')

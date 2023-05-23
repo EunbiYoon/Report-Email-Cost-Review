@@ -5,7 +5,7 @@ from email.mime.text import MIMEText
 from email.mime.image import MIMEImage
 from email.mime.multipart import MIMEMultipart
 from email.mime.application import MIMEApplication 
-from table import this_week, F_BPAE_html, T_BPAE_html, D_BPAE_html, F_PACE_html, T_PACE_html, D_PACE_html
+from table import this_week, F_BPAE_html, T_BPAE_html, D_BPAE_html, F_PACE_html, T_PACE_html, D_PACE_html, FBI_html, TBI_html, DBI_html, FPI_html, TPI_html, DPI_html
 from graph import save_path,today_date
 import os
 
@@ -19,7 +19,7 @@ msg=MIMEMultipart()
 
 # 수신자 발신자 지정
 msg['From']='eunbi1.yoon@lge.com'
-msg['To']='catalina.manolache@lge.com'
+# msg['To']='catalina.manolache@lge.com'
 # msg['To']='iggeun.kwon@lge.com'
 # msg['Cc']='janine.williams@lge.com, karina1.beveridge@lge.com, kitae3.park@lge.com, soyoung1.an@lge.com, soyoon1.kim@lge.com, wolyong.ha@lge.com, grace.hwang@lge.com, tg.kim@lge.com, seongju.yu@lge.com, minhyoung.sun@lge.com, jongseop.kim@lge.com, richard.song@lge.com, gilnam.lee@lge.com, jacey.jung@lge.com, 312718@lge.com'
 msg['Bcc']='eunbi1.yoon@lge.com'
@@ -66,29 +66,43 @@ F_PACE_attach = MIMEText(F_PACE_html, "html")
 T_PACE_attach = MIMEText(T_PACE_html, "html")
 D_PACE_attach = MIMEText(D_PACE_html, "html")
 
+FBI_attach = MIMEText(FBI_html, "html")
+TBI_attach = MIMEText(TBI_html, "html")
+DBI_attach = MIMEText(DBI_html, "html")
+
+FPI_attach = MIMEText(FPI_html, "html")
+TPI_attach = MIMEText(TPI_html, "html")
+DPI_attach = MIMEText(DPI_html, "html")
+
 msg.attach(MIMEText('<br/><h3 style="font-family:sans-serif;">Front Loader BPA Entity Trend</h3>','html'))
 msg.attach(image1)
 msg.attach(F_BPAE_attach)
+msg.attach(FBI_attach)
 
 msg.attach(MIMEText('<br/><br/><h3 style="font-family:sans-serif;">Top Loader BPA Entity Trend</h3>','html'))
 msg.attach(image2)
 msg.attach(T_BPAE_attach)
+msg.attach(TBI_attach)
 
 msg.attach(MIMEText('<br/><br/><h3 style="font-family:sans-serif;">Dryer BPA Entity Trend</h3>','html'))
 msg.attach(image3)
 msg.attach(D_BPAE_attach)
+msg.attach(DBI_attach)
 
 msg.attach(MIMEText('<br/><br/><h3 style="font-family:sans-serif;">Front Loader PAC Entity Trend</h3>','html'))
 msg.attach(image4)
 msg.attach(F_PACE_attach)
+msg.attach(FPI_attach)
 
 msg.attach(MIMEText('<br/><br/><h3 style="font-family:sans-serif;">Top Loader PAC Entity Trend</h3>','html'))
 msg.attach(image5)
 msg.attach(T_PACE_attach)
+msg.attach(TPI_attach)
 
 msg.attach(MIMEText('<br/><br/><h3 style="font-family:sans-serif;">Dryer PAC Entity Trend</h3>','html'))
 msg.attach(image6)
 msg.attach(D_PACE_attach)
+msg.attach(DPI_attach)
 
 
 #첨부 파일1
