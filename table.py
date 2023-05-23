@@ -356,28 +356,28 @@ DPI_merge = pd.concat([DPI_P_1, DPI_P_2], axis=1)
 
 #Total value
 FBI_sum=FBI_merge.sum()
-FBI_merge.at["total","VI"]=FBI_sum["VI"]
-FBI_merge.at["total","VI.1"]=FBI_sum["VI.1"]
+FBI_merge.at["Total","VI"]=FBI_sum["VI"]
+FBI_merge.at["Total","VI.1"]=FBI_sum["VI.1"]
 
 TBI_sum=TBI_merge.sum()
-TBI_merge.at["total","VI"]=TBI_sum["VI"]
-TBI_merge.at["total","VI.1"]=TBI_sum["VI.1"]
+TBI_merge.at["Total","VI"]=TBI_sum["VI"]
+TBI_merge.at["Total","VI.1"]=TBI_sum["VI.1"]
 
 DBI_sum=DBI_merge.sum()
-DBI_merge.at["total","VI"]=DBI_sum["VI"]
-DBI_merge.at["total","VI.1"]=DBI_sum["VI.1"]
+DBI_merge.at["Total","VI"]=DBI_sum["VI"]
+DBI_merge.at["Total","VI.1"]=DBI_sum["VI.1"]
 
 FPI_sum=FPI_merge.sum()
-FPI_merge.at["total","VI"]=FPI_sum["VI"]
-FPI_merge.at["total","VI.1"]=FPI_sum["VI.1"]
+FPI_merge.at["Total","VI"]=FPI_sum["VI"]
+FPI_merge.at["Total","VI.1"]=FPI_sum["VI.1"]
 
 TPI_sum=TPI_merge.sum()
-TPI_merge.at["total","VI"]=TPI_sum["VI"]
-TPI_merge.at["total","VI.1"]=TPI_sum["VI.1"]
+TPI_merge.at["Total","VI"]=TPI_sum["VI"]
+TPI_merge.at["Total","VI.1"]=TPI_sum["VI.1"]
 
 DPI_sum=DPI_merge.sum()
-DPI_merge.at["total","VI"]=DPI_sum["VI"]
-DPI_merge.at["total","VI.1"]=DPI_sum["VI.1"]
+DPI_merge.at["Total","VI"]=DPI_sum["VI"]
+DPI_merge.at["Total","VI.1"]=DPI_sum["VI.1"]
 
 #round2
 FBI_merge=FBI_merge.round(2)
