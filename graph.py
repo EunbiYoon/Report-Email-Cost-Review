@@ -7,8 +7,8 @@ from random import randrange
 import numpy as np
 
 #save file location
-save_path="C:/Users/RnD Workstation/Documents/CostReview/0519/"
-today_date="_0519"
+save_path="C:/Users/RnD Workstation/Documents/CostReview/0526/"
+today_date="_0526"
 color_list=['#4472C4','#A5A5A5','#70AD47','#FFC000','#ED7D31','#6600CC','#FF66FF']
 
 ########################################## FL - BPA Entity ##########################################
