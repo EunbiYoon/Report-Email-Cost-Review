@@ -184,9 +184,9 @@ graph_data=graph_data.reset_index()
 for i in range(len(graph_data.index)):
     ax.annotate(graph_data.at[i,0],xy=(graph_data.at[i,"index"],graph_data.at[i,0]), va='bottom', color='#4472C4',fontsize=9)
     ax.annotate(graph_data.at[i,1],xy=(graph_data.at[i,"index"],graph_data.at[i,1]), va='bottom', color='#A5A5A5',fontsize=9)
-    ax.annotate(graph_data.at[i,2],xy=(graph_data.at[i,"index"],graph_data.at[i,2]), va='bottom', color='#70AD47',fontsize=9)
+    ax.annotate(graph_data.at[i,2],xy=(graph_data.at[i,"index"],graph_data.at[i,2]), va='top', color='#70AD47',fontsize=9)
     ax.annotate(graph_data.at[i,3],xy=(graph_data.at[i,"index"],graph_data.at[i,3]), va='bottom', color='#FFC000',fontsize=9)
-    ax.annotate(graph_data.at[i,4],xy=(graph_data.at[i,"index"],graph_data.at[i,4]), va='bottom', color='#ED7D31',fontsize=9)
+    ax.annotate(graph_data.at[i,4],xy=(graph_data.at[i,"index"],graph_data.at[i,4]), va='top', color='#ED7D31',fontsize=9)
     ax.annotate(graph_data.at[i,5],xy=(graph_data.at[i,"index"],graph_data.at[i,5]), va='bottom', color='#6600CC',fontsize=9)
 
 ax.yaxis.tick_right()
