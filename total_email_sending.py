@@ -20,7 +20,7 @@ msg=MIMEMultipart()
 # 수신자 발신자 지정
 msg['From']='eunbi1.yoon@lge.com'
 # msg['To']='catalina.manolache@lge.com'
-# msg['To']='iggeun.kwon@lge.com'
+# msg['To' ]='iggeun.kwon@lge.com'
 # msg['Cc']='janine.williams@lge.com, karina1.beveridge@lge.com, kitae3.park@lge.com, soyoung1.an@lge.com, soyoon1.kim@lge.com, wolyong.ha@lge.com, grace.hwang@lge.com, tg.kim@lge.com, seongju.yu@lge.com, minhyoung.sun@lge.com, jongseop.kim@lge.com, richard.song@lge.com, gilnam.lee@lge.com, jacey.jung@lge.com, 312718@lge.com'
 msg['Bcc']='eunbi1.yoon@lge.com'
 
