@@ -26,8 +26,8 @@ msg['Bcc']='eunbi1.yoon@lge.com'
 
 #Subject 꾸미기
 msg['Subject']='Cost Review Report '+this_week
-# msg.attach(MIMEText('<h4 style="font-family:sans-serif; font-weight:500">Dear all,<br/>I would like to share this week cost review report and detailed informations are in below website.<br/>You can access website from CloudPC or LG wifi for security purpose. <a href="http://10.225.2.85">http://10.225.2.85</a></h4>','html'))
-msg.attach(MIMEText('<h3 style="font-family:sans-serif;">[matching number format in item list]<br/>Dear Catalina,</h3><h4 style="font-family:sans-serif; font-weight:500">sharing you to updated version, <br/>I just want to send this email for this week if the data is correct, I can update more on next week.</h4>','html'))
+msg.attach(MIMEText('<h4 style="font-family:sans-serif; font-weight:500">Dear all,<br/><br/>I would like to share this week cost review report and detailed informations are in below website.<br/>You can access website from CloudPC or LG wifi for security purpose. <a href="http://10.225.2.85">http://10.225.2.85</a></h4>','html'))
+# msg.attach(MIMEText('<h3 style="font-family:sans-serif;">[matching number format in item list]<br/>Dear Catalina,</h3><h4 style="font-family:sans-serif; font-weight:500">Please chek final data of item and graph change,</h4>','html'))
 
 
 # graph file read
