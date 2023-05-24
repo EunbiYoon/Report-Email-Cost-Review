@@ -380,7 +380,7 @@ TBI_merge=TBI_merge.round(2)
 DBI_merge=DBI_merge.round(2)
 FPI_merge=FPI_merge.round(2)
 TPI_merge=TPI_merge.round(2)
-DBI_merge=DBI_merge.round(2)
+DPI_merge=DPI_merge.round(2)
 
 # #delete index column
 # FBI_merge=pd.DataFrame(FBI_merge)
