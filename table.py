@@ -390,6 +390,12 @@ FPI_merge = pd.concat([FPI_P_1, FPI_P_2], axis=1)
 TPI_merge = pd.concat([TPI_P_1, TPI_P_2], axis=1)
 DPI_merge = pd.concat([DPI_P_1, DPI_P_2], axis=1)
 
+#exceptional - ERROR MUST FIX
+DPI_merge=DPI_merge.drop([9],axis=0)
+DPI_merge.index=range(1,len(DPI_merge)+1)
+DPI_merge.at[4,"Increase"]="Lifter"
+DPI_merge.at[4,"VI"]=1.08
+DPI_merge.at[4,"Date"]=this_week
 
 #Total value
 FBI_sum=FBI_merge.sum()
