@@ -163,37 +163,89 @@ DPI=pd.DataFrame(D_PAC_I.groupby(['Part No','Description']).sum())
 DPI.reset_index(inplace=True)
 
 
-#sort top 5
-FBI["abs_VI"]=abs(FBI["VI"])
-FBI=FBI.sort_values(by='abs_VI', ascending=False)
-FBI=FBI[:3]
-FBI.reset_index(inplace=True, drop=True)
+#sort top 5 (increase:2, decrease :3)
+FBI=FBI.sort_values(by='VI',ascending=True)
+FBI_L=FBI[:3]
+FBI=FBI.sort_values(by='VI',ascending=False)
+FBI_H=FBI[:2]
 
-TBI["abs_VI"]=abs(TBI["VI"])
-TBI=TBI.sort_values(by='abs_VI', ascending=False)
-TBI=TBI[:3]
-TBI.reset_index(inplace=True, drop=True)
+TBI=TBI.sort_values(by='VI',ascending=True)
+TBI_L=TBI[:3]
+TBI=TBI.sort_values(by='VI',ascending=False)
+TBI_H=TBI[:2]
 
-DBI["abs_VI"]=abs(DBI["VI"])
-DBI=DBI.sort_values(by='abs_VI', ascending=False)
-DBI=DBI[:3]
-DBI.reset_index(inplace=True, drop=True)
+DBI=DBI.sort_values(by='VI',ascending=True)
+DBI_L=DBI[:3]
+DBI=DBI.sort_values(by='VI',ascending=False)
+DBI_H=DBI[:2]
 
-FPI["abs_VI"]=abs(FPI["VI"])
-FPI=FPI.sort_values(by='abs_VI', ascending=False)
-FPI=FPI[:3]
-FPI.reset_index(inplace=True, drop=True)
+FPI=FPI.sort_values(by='VI',ascending=True)
+FPI_L=FPI[:3]
+FPI=FPI.sort_values(by='VI',ascending=False)
+FPI_H=FPI[:2]
 
-TPI["abs_VI"]=abs(TPI["VI"])
-TPI=TPI.sort_values(by='abs_VI', ascending=False)
-TPI=TPI[:3]
-TPI.reset_index(inplace=True, drop=True)
+TPI=TPI.sort_values(by='VI',ascending=True)
+TPI_L=TPI[:3]
+TPI=TPI.sort_values(by='VI',ascending=False)
+TPI_H=TPI[:2]
 
-DPI["abs_VI"]=abs(DPI["VI"])
-DPI=DPI.sort_values(by='abs_VI', ascending=False)
-DPI=DPI[:3]
-DPI.reset_index(inplace=True, drop=True)
+DPI=DPI.sort_values(by='VI',ascending=True)
+DPI_L=DPI[:3]
+DPI=DPI.sort_values(by='VI',ascending=False)
+DPI_H=DPI[:2]
 
+
+#high value need to check it is all increase or not,
+FBI_H.reset_index(inplace=True, drop=True)
+for i in range(len(FBI_H)):
+    condition=FBI_H.at[i,"VI"]
+    if condition<0:
+        FBI_H=FBI_H.drop([i],axis=0)
+
+TBI_H.reset_index(inplace=True, drop=True)
+for i in range(len(FBI_H)):
+    condition=TBI_H.at[i,"VI"]
+    if condition<0:
+        TBI_H=TBI_H.drop([i],axis=0)
+
+DBI_H.reset_index(inplace=True, drop=True)
+for i in range(len(DBI_H)):
+    condition=DBI_H.at[i,"VI"]
+    if condition<0:
+        DBI_H=DBI_H.drop([i],axis=0)
+
+FPI_H.reset_index(inplace=True, drop=True)
+for i in range(len(FPI_H)):
+    condition=FPI_H.at[i,"VI"]
+    if condition<0:
+        FPI_H=FPI_H.drop([i],axis=0)
+
+TPI_H.reset_index(inplace=True, drop=True)
+for i in range(len(TPI_H)):
+    condition=TPI_H.at[i,"VI"]
+    if condition<0:
+        TPI_H=TPI_H.drop([i],axis=0)
+
+DPI_H.reset_index(inplace=True, drop=True)
+for i in range(len(DPI_H)):
+    condition=DPI_H.at[i,"VI"]
+    if condition<0:
+        DPI_H=DPI_H.drop([i],axis=0)
+
+#reset H and L
+FBI_H.reset_index(inplace=True, drop=True)
+TBI_H.reset_index(inplace=True, drop=True)
+DBI_H.reset_index(inplace=True, drop=True)
+FPI_H.reset_index(inplace=True, drop=True)
+TPI_H.reset_index(inplace=True, drop=True)
+DPI_H.reset_index(inplace=True, drop=True)
+
+FBI_L.reset_index(inplace=True, drop=True)
+TBI_L.reset_index(inplace=True, drop=True)
+DBI_L.reset_index(inplace=True, drop=True)
+FPI_L.reset_index(inplace=True, drop=True)
+TPI_L.reset_index(inplace=True, drop=True)
+DPI_L.reset_index(inplace=True, drop=True)
 
 # read previous report and merge
 FBI_P=pd.read_excel("C:/Users/RnD Workstation/Documents/CostReview/0519/Cost Review_0519.xlsx", sheet_name="FL_BPA_Item")
@@ -249,97 +301,86 @@ DPI_P_2=DPI_P[['Decrease','VI.1','Date.1']].dropna()
 # insert to old data
 row_1=len(FBI_P_1)
 row_2=len(FBI_P_2)
-for i in range(len(FBI)):
-    condition=FBI.at[i,"VI"]
-    if condition>0:
-        FBI_P_1.at[row_1,"Increase"]=FBI.at[i,"Description"]
-        FBI_P_1.at[row_1,"VI"]=FBI.at[i,"VI"]
-        FBI_P_1.at[row_1,"Date"]=this_week
-        row_1=row_1+1
-    else:
-        FBI_P_2.at[row_2,"Decrease"]=FBI.at[i,"Description"]
-        FBI_P_2.at[row_2,"VI.1"]=FBI.at[i,"VI"]
-        FBI_P_2.at[row_2,"Date.1"]=this_week
-        row_2=row_2+1
+for i in range(len(FBI_H)):
+    row_1=row_1+1
+    FBI_P_1.at[row_1,"Increase"]=FBI_H.at[i,"Description"]
+    FBI_P_1.at[row_1,"VI"]=FBI_H.at[i,"VI"]
+    FBI_P_1.at[row_1,"Date"]=this_week
+for i in range(len(FBI_L)):
+    row_2=row_2+1
+    FBI_P_2.at[row_2,"Decrease"]=FBI_L.at[i,"Description"]
+    FBI_P_2.at[row_2,"VI.1"]=FBI_L.at[i,"VI"]
+    FBI_P_2.at[row_2,"Date.1"]=this_week
+
 
 row_1=len(TBI_P_1)
 row_2=len(TBI_P_2)
-for i in range(len(TBI)):
-    condition=TBI.at[i,"VI"]
-    if condition>0:
-        TBI_P_1.at[row_1,"Increase"]=TBI.at[i,"Description"]
-        TBI_P_1.at[row_1,"VI"]=TBI.at[i,"VI"]
-        TBI_P_1.at[row_1,"Date"]=this_week
-        row_1=row_1+1
-    else:
-        row=len(TBI_P_2)+i
-        TBI_P_2.at[row_2,"Decrease"]=TBI.at[i,"Description"]
-        TBI_P_2.at[row_2,"VI.1"]=TBI.at[i,"VI"]
-        TBI_P_2.at[row_2,"Date.1"]=this_week
-        row_2=row_2+1
+for i in range(len(TBI_H)):
+    row_1=row_1+1
+    TBI_P_1.at[row_1,"Increase"]=TBI_H.at[i,"Description"]
+    TBI_P_1.at[row_1,"VI"]=TBI_H.at[i,"VI"]
+    TBI_P_1.at[row_1,"Date"]=this_week
+for i in range(len(TBI_L)):
+    row_2=row_2+1
+    TBI_P_2.at[row_2,"Decrease"]=TBI_L.at[i,"Description"]
+    TBI_P_2.at[row_2,"VI.1"]=TBI_L.at[i,"VI"]
+    TBI_P_2.at[row_2,"Date.1"]=this_week
+
 
 row_1=len(DBI_P_1)
-row_2=len(DBI_P_2)     
-for i in range(len(DBI)):
-    condition=DBI.at[i,"VI"]
-    if condition>0:
-        DBI_P_1.at[row_1,"Increase"]=DBI.at[i,"Description"]
-        DBI_P_1.at[row_1,"VI"]=DBI.at[i,"VI"]
-        DBI_P_1.at[row_1,"Date"]=this_week
-        row_1=row_1+1
-    else:
-        row=len(DBI_P_2)+i
-        DBI_P_2.at[row_2,"Decrease"]=DBI.at[i,"Description"]
-        DBI_P_2.at[row_2,"VI.1"]=DBI.at[i,"VI"]
-        DBI_P_2.at[row_2,"Date.1"]=this_week
-        row_2=row_2+1
+row_2=len(DBI_P_2)
+for i in range(len(DBI_H)):
+    row_1=row_1+1
+    DBI_P_1.at[row_1,"Increase"]=DBI_H.at[i,"Description"]
+    DBI_P_1.at[row_1,"VI"]=DBI_H.at[i,"VI"]
+    DBI_P_1.at[row_1,"Date"]=this_week
+
+for i in range(len(DBI_L)):
+    row_2=row_2+1
+    DBI_P_2.at[row_2,"Decrease"]=DBI_L.at[i,"Description"]
+    DBI_P_2.at[row_2,"VI.1"]=DBI_L.at[i,"VI"]
+    DBI_P_2.at[row_2,"Date.1"]=this_week
 
 row_1=len(FPI_P_1)
-row_2=len(FPI_P_2) 
-for i in range(len(FPI)):
-    condition=FPI.at[i,"VI"]
-    if condition>0:
-        row=len(FPI_P_1)+i
-        FPI_P_1.at[row_1,"Increase"]=FPI.at[i,"Description"]
-        FPI_P_1.at[row_1,"VI"]=FPI.at[i,"VI"]
-        FPI_P_1.at[row_1,"Date"]=this_week
-        row_1=row_1+1
-    else:
-        FPI_P_2.at[row_2,"Decrease"]=FPI.at[i,"Description"]
-        FPI_P_2.at[row_2,"VI.1"]=FPI.at[i,"VI"]
-        FPI_P_2.at[row_2,"Date.1"]=this_week
-        row_2=row_2+1
+row_2=len(FPI_P_2)
+for i in range(len(FPI_H)):
+    row_1=row_1+1
+    FPI_P_1.at[row_1,"Increase"]=FPI_H.at[i,"Description"]
+    FPI_P_1.at[row_1,"VI"]=FPI_H.at[i,"VI"]
+    FPI_P_1.at[row_1,"Date"]=this_week
+for i in range(len(FPI_L)):
+    row_2=row_2+1
+    FPI_P_2.at[row_2,"Decrease"]=FPI_L.at[i,"Description"]
+    FPI_P_2.at[row_2,"VI.1"]=FPI_L.at[i,"VI"]
+    FPI_P_2.at[row_2,"Date.1"]=this_week
 
 row_1=len(TPI_P_1)
-row_2=len(TPI_P_2) 
-for i in range(len(TPI)):
-    condition=TPI.at[i,"VI"]
-    if condition>0:
-        TPI_P_1.at[row_1,"Increase"]=TPI.at[i,"Description"]
-        TPI_P_1.at[row_1,"VI"]=TPI.at[i,"VI"]
-        TPI_P_1.at[row_1,"Date"]=this_week
-        row_1=row_1+1
-    else:
-        row=len(TPI_P_2)+i
-        TPI_P_2.at[row_2,"Decrease"]=TPI.at[i,"Description"]
-        TPI_P_2.at[row_2,"VI.1"]=TPI.at[i,"VI"]
-        TPI_P_2.at[row_2,"Date.1"]=this_week
-        row_2=row_2+1
+row_2=len(TPI_P_2)
+for i in range(len(TPI_H)):
+    row_1=row_1+1
+    TPI_P_1.at[row_1,"Increase"]=TPI_H.at[i,"Description"]
+    TPI_P_1.at[row_1,"VI"]=TPI_H.at[i,"VI"]
+    TPI_P_1.at[row_1,"Date"]=this_week
+for i in range(len(TPI_L)):
+    row_2=row_2+1
+    TPI_P_2.at[row_2,"Decrease"]=TPI_L.at[i,"Description"]
+    TPI_P_2.at[row_2,"VI.1"]=TPI_L.at[i,"VI"]
+    TPI_P_2.at[row_2,"Date.1"]=this_week
+
 
 row_1=len(DPI_P_1)
 row_2=len(DPI_P_2)
-for i in range(len(DPI)):
-    condition=DPI.at[i,"VI"]
-    if condition>0:
-        DPI_P_1.at[row_1,"Increase"]=DPI.at[i,"Description"]
-        DPI_P_1.at[row_1,"VI"]=DPI.at[i,"VI"]
-        DPI_P_1.at[row_1,"Date"]=this_week
-        row_1=row_1+1
-    else:
-        DPI_P_2.at[row_2,"Decrease"]=DPI.at[i,"Description"]
-        DPI_P_2.at[row_2,"VI.1"]=DPI.at[i,"VI"]
-        DPI_P_2.at[row_2,"Date.1"]=this_week
-        row_2=row_2+1
+for i in range(len(DPI_H)):
+    row_1=row_1+1
+    DPI_P_1.at[row_1,"Increase"]=DPI_H.at[i,"Description"]
+    DPI_P_1.at[row_1,"VI"]=DPI_H.at[i,"VI"]
+    DPI_P_1.at[row_1,"Date"]=this_week
+for i in range(len(DPI_L)):
+    row_2=row_2+1
+    DPI_P_2.at[row_2,"Decrease"]=DPI_L.at[i,"Description"]
+    DPI_P_2.at[row_2,"VI.1"]=DPI_L.at[i,"VI"]
+    DPI_P_2.at[row_2,"Date.1"]=this_week
+
 
 #merge increase and decrease again
 FBI_merge = pd.concat([FBI_P_1, FBI_P_2], axis=1)
@@ -348,6 +389,7 @@ DBI_merge = pd.concat([DBI_P_1, DBI_P_2], axis=1)
 FPI_merge = pd.concat([FPI_P_1, FPI_P_2], axis=1)
 TPI_merge = pd.concat([TPI_P_1, TPI_P_2], axis=1)
 DPI_merge = pd.concat([DPI_P_1, DPI_P_2], axis=1)
+
 
 #Total value
 FBI_sum=FBI_merge.sum()
