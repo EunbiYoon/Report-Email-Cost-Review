@@ -42,7 +42,7 @@ for i in range(len(graph_data.index)):
     ax.annotate(graph_data.at[i,4],xy=(graph_data.at[i,"index"],graph_data.at[i,4]), va='bottom', color='#ED7D31',fontsize=9)
 
 ax.yaxis.tick_right()
-ax.legend()
+ax.legend(loc='upper center', bbox_to_anchor=(0.5,1.15), ncol=5)
 #그림 저장
 plt.tight_layout()
 plt.savefig(save_path+file_name)
@@ -79,7 +79,7 @@ for i in range(len(graph_data.index)):
     ax.annotate(graph_data.at[i,5],xy=(graph_data.at[i,"index"],graph_data.at[i,5]), va='bottom', color='#6600CC',fontsize=9)
 
 ax.yaxis.tick_right()
-ax.legend()
+ax.legend(loc='upper center', bbox_to_anchor=(0.5,1.15), ncol=6)
 #그림 저장
 plt.tight_layout()
 plt.savefig(save_path+file_name)
@@ -117,7 +117,7 @@ for i in range(len(graph_data.index)):
     ax.annotate(graph_data.at[i,6],xy=(graph_data.at[i,"index"],graph_data.at[i,6]), va='bottom', color='#FF66FF',fontsize=9)
 
 ax.yaxis.tick_right()
-ax.legend()
+ax.legend(loc='upper center', bbox_to_anchor=(0.5,1.15), ncol=7)
 #그림 저장
 plt.tight_layout()
 plt.savefig(save_path+file_name)
@@ -153,7 +153,7 @@ for i in range(len(graph_data.index)):
     ax.annotate(graph_data.at[i,4],xy=(graph_data.at[i,"index"],graph_data.at[i,4]), va='bottom', color='#ED7D31',fontsize=9)
 
 ax.yaxis.tick_right()
-ax.legend()
+ax.legend(loc='upper center', bbox_to_anchor=(0.5,1.15), ncol=5)
 #그림 저장
 plt.tight_layout()
 plt.savefig(save_path+file_name)
@@ -190,7 +190,7 @@ for i in range(len(graph_data.index)):
     ax.annotate(graph_data.at[i,5],xy=(graph_data.at[i,"index"],graph_data.at[i,5]), va='bottom', color='#6600CC',fontsize=9)
 
 ax.yaxis.tick_right()
-ax.legend()
+ax.legend(loc='upper center', bbox_to_anchor=(0.5,1.15), ncol=6)
 #그림 저장
 plt.tight_layout()
 plt.savefig(save_path+file_name)
@@ -228,7 +228,7 @@ for i in range(len(graph_data.index)):
     ax.annotate(graph_data.at[i,6],xy=(graph_data.at[i,"index"],graph_data.at[i,6]), va='bottom', color='#FF66FF',fontsize=9)
 
 ax.yaxis.tick_right()
-ax.legend()
+ax.legend(loc='upper center', bbox_to_anchor=(0.5,1.15), ncol=7)
 #그림 저장
 plt.tight_layout()
 plt.savefig(save_path+file_name)
