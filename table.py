@@ -5,6 +5,8 @@ import numpy as np
 
 #This weeknum
 this_week="23.05 W4"
+next_month1="23.06"
+next_month2="23.07"
 
 ############################ Trend Table ############################  
 #read original data
@@ -64,6 +66,26 @@ T_PACE_Merge=T_PACE_Merge.drop(['Unnamed: 0'],axis=1)
 D_BPAE_Merge=D_BPAE_Merge.drop(['Unnamed: 0'],axis=1)
 D_PACE_Merge=D_PACE_Merge.drop(['Unnamed: 0'],axis=1)
 
+# add the expected value
+F_BPAE_Merge[next_month1]=F_BPAE_Merge[this_week]-0.5
+F_BPAE_Merge[next_month2]=F_BPAE_Merge[this_week]-1
+
+F_PACE_Merge[next_month1]=F_PACE_Merge[this_week]-0.5
+F_PACE_Merge[next_month2]=F_PACE_Merge[this_week]-1
+
+T_BPAE_Merge[next_month1]=T_BPAE_Merge[this_week]-0.5
+T_BPAE_Merge[next_month2]=T_BPAE_Merge[this_week]-1
+
+T_PACE_Merge[next_month1]=T_PACE_Merge[this_week]-0.5
+T_PACE_Merge[next_month2]=T_PACE_Merge[this_week]-1
+
+D_BPAE_Merge[next_month1]=D_BPAE_Merge[this_week]-0.5
+D_BPAE_Merge[next_month2]=D_BPAE_Merge[this_week]-1
+
+D_PACE_Merge[next_month1]=D_PACE_Merge[this_week]-0.5
+D_PACE_Merge[next_month2]=D_PACE_Merge[this_week]-1
+
+
 # change index
 F_BPAE_Merge.index=range(1,len(F_BPAE_Merge)+1)
 F_PACE_Merge.index=range(1,len(F_PACE_Merge)+1)
@@ -71,7 +93,6 @@ T_BPAE_Merge.index=range(1,len(T_BPAE_Merge)+1)
 T_PACE_Merge.index=range(1,len(T_PACE_Merge)+1)
 D_BPAE_Merge.index=range(1,len(D_BPAE_Merge)+1)
 D_PACE_Merge.index=range(1,len(D_PACE_Merge)+1)
-
 ############################ Item Table ############################  
 #data read
 F_BPA_I=pd.read_excel("C:/Users/RnD Workstation/Documents/CostReview/0526/data.xlsx", sheet_name="BPA FL")
@@ -87,80 +108,91 @@ T_PAC_I=pd.read_excel("C:/Users/RnD Workstation/Documents/CostReview/0526/data.x
 F_BPA_I=F_BPA_I.drop([0],axis=0)
 F_BPA_I=F_BPA_I[['[Left] Model/PartNo.3','[Left] Model/PartNo.4','Gap','Gap.1']]
 F_BPA_I=F_BPA_I.dropna()
+F_BPA_I=F_BPA_I.drop(['Gap'],axis=1)
+F_BPA_I=F_BPA_I.rename(columns={"[Left] Model/PartNo.3": "Part No", "[Left] Model/PartNo.4": "Description","Gap.1":"VI"})
 F_BPA_I.reset_index(drop=True, inplace=True)
 
 D_BPA_I=D_BPA_I.drop([0],axis=0)
 D_BPA_I=D_BPA_I[['[Left] Model/PartNo.3','[Left] Model/PartNo.4','Gap','Gap.1']]
 D_BPA_I=D_BPA_I.dropna()
+D_BPA_I=D_BPA_I.drop(['Gap'],axis=1)
+D_BPA_I=D_BPA_I.rename(columns={"[Left] Model/PartNo.3": "Part No", "[Left] Model/PartNo.4": "Description","Gap.1":"VI"})
 D_BPA_I.reset_index(drop=True, inplace=True)
 
 T_BPA_I=T_BPA_I.drop([0],axis=0)
 T_BPA_I=T_BPA_I[['[Left] Model/PartNo.3','[Left] Model/PartNo.4','Gap','Gap.1']]
 T_BPA_I=T_BPA_I.dropna()
+T_BPA_I=T_BPA_I.drop(['Gap'],axis=1)
+T_BPA_I=T_BPA_I.rename(columns={"[Left] Model/PartNo.3": "Part No", "[Left] Model/PartNo.4": "Description","Gap.1":"VI"})
 T_BPA_I.reset_index(drop=True, inplace=True)
 
 F_PAC_I=F_PAC_I.drop([0],axis=0)
 F_PAC_I=F_PAC_I[['[Left] Model/PartNo.3','[Left] Model/PartNo.4','Gap','Gap.1']]
 F_PAC_I=F_PAC_I.dropna()
+F_PAC_I=F_PAC_I.drop(['Gap'],axis=1)
+F_PAC_I=F_PAC_I.rename(columns={"[Left] Model/PartNo.3": "Part No", "[Left] Model/PartNo.4": "Description","Gap.1":"VI"})
 F_PAC_I.reset_index(drop=True, inplace=True)
 
 D_PAC_I=D_PAC_I.drop([0],axis=0)
 D_PAC_I=D_PAC_I[['[Left] Model/PartNo.3','[Left] Model/PartNo.4','Gap','Gap.1']]
 D_PAC_I=D_PAC_I.dropna()
+D_PAC_I=D_PAC_I.drop(['Gap'],axis=1)
+D_PAC_I=D_PAC_I.rename(columns={"[Left] Model/PartNo.3": "Part No", "[Left] Model/PartNo.4": "Description","Gap.1":"VI"})
 D_PAC_I.reset_index(drop=True, inplace=True)
 
 T_PAC_I=T_PAC_I.drop([0],axis=0)
 T_PAC_I=T_PAC_I[['[Left] Model/PartNo.3','[Left] Model/PartNo.4','Gap','Gap.1']]
 T_PAC_I=T_PAC_I.dropna()
+T_PAC_I=T_PAC_I.drop(['Gap'],axis=1)
+T_PAC_I=T_PAC_I.rename(columns={"[Left] Model/PartNo.3": "Part No", "[Left] Model/PartNo.4": "Description","Gap.1":"VI"})
 T_PAC_I.reset_index(drop=True, inplace=True)
 
+
 # part number same merge
-print(T_PAC_I)
+FBI=pd.DataFrame(F_BPA_I.groupby(['Part No','Description']).sum())
+FBI.reset_index(inplace=True)
+TBI=pd.DataFrame(T_BPA_I.groupby(['Part No','Description']).sum())
+TBI.reset_index(inplace=True)
+DBI=pd.DataFrame(D_BPA_I.groupby(['Part No','Description']).sum())
+DBI.reset_index(inplace=True)
+FPI=pd.DataFrame(F_PAC_I.groupby(['Part No','Description']).sum())
+FPI.reset_index(inplace=True)
+TPI=pd.DataFrame(T_PAC_I.groupby(['Part No','Description']).sum())
+TPI.reset_index(inplace=True)
+DPI=pd.DataFrame(D_PAC_I.groupby(['Part No','Description']).sum())
+DPI.reset_index(inplace=True)
+
 
 #sort top 5
-FBI=pd.DataFrame()
-DBI=pd.DataFrame()
-TBI=pd.DataFrame()
-FPI=pd.DataFrame()
-DPI=pd.DataFrame()
-TPI=pd.DataFrame()
+FBI["abs_VI"]=abs(FBI["VI"])
+FBI=FBI.sort_values(by='abs_VI', ascending=False)
+FBI=FBI[:3]
+FBI.reset_index(inplace=True, drop=True)
 
-F_BPA_I["abs_gap.1"]=abs(F_BPA_I['Gap.1'])
-FBI=F_BPA_I.sort_values(by='abs_gap.1', ascending=False)
-FBI=FBI.reset_index()
-FBI=FBI[:5]
+TBI["abs_VI"]=abs(TBI["VI"])
+TBI=TBI.sort_values(by='abs_VI', ascending=False)
+TBI=TBI[:3]
+TBI.reset_index(inplace=True, drop=True)
 
-D_BPA_I["abs_gap.1"]=abs(D_BPA_I['Gap.1'])
-DBI=D_BPA_I.sort_values(by='abs_gap.1', ascending=False)
-DBI=DBI.reset_index()
-DBI=DBI[:5]
+DBI["abs_VI"]=abs(DBI["VI"])
+DBI=DBI.sort_values(by='abs_VI', ascending=False)
+DBI=DBI[:3]
+DBI.reset_index(inplace=True, drop=True)
 
-T_BPA_I["abs_gap.1"]=abs(T_BPA_I['Gap.1'])
-TBI=T_BPA_I.sort_values(by='abs_gap.1', ascending=False)
-TBI=TBI.reset_index()
-TBI=TBI[:5]
+FPI["abs_VI"]=abs(FPI["VI"])
+FPI=FPI.sort_values(by='abs_VI', ascending=False)
+FPI=FPI[:3]
+FPI.reset_index(inplace=True, drop=True)
 
-F_PAC_I["abs_gap.1"]=abs(F_PAC_I['Gap.1'])
-FPI=F_PAC_I.sort_values(by='abs_gap.1', ascending=False)
-FPI=FPI.reset_index()
-FPI=FPI[:5]
+TPI["abs_VI"]=abs(TPI["VI"])
+TPI=TPI.sort_values(by='abs_VI', ascending=False)
+TPI=TPI[:3]
+TPI.reset_index(inplace=True, drop=True)
 
-D_PAC_I["abs_gap.1"]=abs(D_PAC_I['Gap.1'])
-DPI=D_PAC_I.sort_values(by='abs_gap.1', ascending=False)
-DPI=DPI.reset_index()
-DPI=DPI[:5]
-
-T_PAC_I["abs_gap.1"]=abs(T_PAC_I['Gap.1'])
-TPI=T_PAC_I.sort_values(by='abs_gap.1', ascending=False)
-TPI=TPI.reset_index()
-TPI=TPI[:5]
-
-print(FBI)
-print(TBI)
-print(DBI)
-print(FPI)
-print(TPI)
-print(DPI)
+DPI["abs_VI"]=abs(DPI["VI"])
+DPI=DPI.sort_values(by='abs_VI', ascending=False)
+DPI=DPI[:3]
+DPI.reset_index(inplace=True, drop=True)
 
 
 # read previous report and merge
@@ -220,12 +252,12 @@ row_2=len(FBI_P_2)
 for i in range(len(FBI)):
     condition=FBI.at[i,"VI"]
     if condition>0:
-        FBI_P_1.at[row_1,"Increase"]=FBI.at[i,"Desc"]
+        FBI_P_1.at[row_1,"Increase"]=FBI.at[i,"Description"]
         FBI_P_1.at[row_1,"VI"]=FBI.at[i,"VI"]
         FBI_P_1.at[row_1,"Date"]=this_week
         row_1=row_1+1
     else:
-        FBI_P_2.at[row_2,"Decrease"]=FBI.at[i,"Desc"]
+        FBI_P_2.at[row_2,"Decrease"]=FBI.at[i,"Description"]
         FBI_P_2.at[row_2,"VI.1"]=FBI.at[i,"VI"]
         FBI_P_2.at[row_2,"Date.1"]=this_week
         row_2=row_2+1
@@ -235,13 +267,13 @@ row_2=len(TBI_P_2)
 for i in range(len(TBI)):
     condition=TBI.at[i,"VI"]
     if condition>0:
-        TBI_P_1.at[row_1,"Increase"]=TBI.at[i,"Desc"]
+        TBI_P_1.at[row_1,"Increase"]=TBI.at[i,"Description"]
         TBI_P_1.at[row_1,"VI"]=TBI.at[i,"VI"]
         TBI_P_1.at[row_1,"Date"]=this_week
         row_1=row_1+1
     else:
         row=len(TBI_P_2)+i
-        TBI_P_2.at[row_2,"Decrease"]=TBI.at[i,"Desc"]
+        TBI_P_2.at[row_2,"Decrease"]=TBI.at[i,"Description"]
         TBI_P_2.at[row_2,"VI.1"]=TBI.at[i,"VI"]
         TBI_P_2.at[row_2,"Date.1"]=this_week
         row_2=row_2+1
@@ -251,13 +283,13 @@ row_2=len(DBI_P_2)
 for i in range(len(DBI)):
     condition=DBI.at[i,"VI"]
     if condition>0:
-        DBI_P_1.at[row_1,"Increase"]=DBI.at[i,"Desc"]
+        DBI_P_1.at[row_1,"Increase"]=DBI.at[i,"Description"]
         DBI_P_1.at[row_1,"VI"]=DBI.at[i,"VI"]
         DBI_P_1.at[row_1,"Date"]=this_week
         row_1=row_1+1
     else:
         row=len(DBI_P_2)+i
-        DBI_P_2.at[row_2,"Decrease"]=DBI.at[i,"Desc"]
+        DBI_P_2.at[row_2,"Decrease"]=DBI.at[i,"Description"]
         DBI_P_2.at[row_2,"VI.1"]=DBI.at[i,"VI"]
         DBI_P_2.at[row_2,"Date.1"]=this_week
         row_2=row_2+1
@@ -268,12 +300,12 @@ for i in range(len(FPI)):
     condition=FPI.at[i,"VI"]
     if condition>0:
         row=len(FPI_P_1)+i
-        FPI_P_1.at[row_1,"Increase"]=FPI.at[i,"Desc"]
+        FPI_P_1.at[row_1,"Increase"]=FPI.at[i,"Description"]
         FPI_P_1.at[row_1,"VI"]=FPI.at[i,"VI"]
         FPI_P_1.at[row_1,"Date"]=this_week
         row_1=row_1+1
     else:
-        FPI_P_2.at[row_2,"Decrease"]=FPI.at[i,"Desc"]
+        FPI_P_2.at[row_2,"Decrease"]=FPI.at[i,"Description"]
         FPI_P_2.at[row_2,"VI.1"]=FPI.at[i,"VI"]
         FPI_P_2.at[row_2,"Date.1"]=this_week
         row_2=row_2+1
@@ -283,13 +315,13 @@ row_2=len(TPI_P_2)
 for i in range(len(TPI)):
     condition=TPI.at[i,"VI"]
     if condition>0:
-        TPI_P_1.at[row_1,"Increase"]=TPI.at[i,"Desc"]
+        TPI_P_1.at[row_1,"Increase"]=TPI.at[i,"Description"]
         TPI_P_1.at[row_1,"VI"]=TPI.at[i,"VI"]
         TPI_P_1.at[row_1,"Date"]=this_week
         row_1=row_1+1
     else:
         row=len(TPI_P_2)+i
-        TPI_P_2.at[row_2,"Decrease"]=TPI.at[i,"Desc"]
+        TPI_P_2.at[row_2,"Decrease"]=TPI.at[i,"Description"]
         TPI_P_2.at[row_2,"VI.1"]=TPI.at[i,"VI"]
         TPI_P_2.at[row_2,"Date.1"]=this_week
         row_2=row_2+1
@@ -299,12 +331,12 @@ row_2=len(DPI_P_2)
 for i in range(len(DPI)):
     condition=DPI.at[i,"VI"]
     if condition>0:
-        DPI_P_1.at[row_1,"Increase"]=DPI.at[i,"Desc"]
+        DPI_P_1.at[row_1,"Increase"]=DPI.at[i,"Description"]
         DPI_P_1.at[row_1,"VI"]=DPI.at[i,"VI"]
         DPI_P_1.at[row_1,"Date"]=this_week
         row_1=row_1+1
     else:
-        DPI_P_2.at[row_2,"Decrease"]=DPI.at[i,"Desc"]
+        DPI_P_2.at[row_2,"Decrease"]=DPI.at[i,"Description"]
         DPI_P_2.at[row_2,"VI.1"]=DPI.at[i,"VI"]
         DPI_P_2.at[row_2,"Date.1"]=this_week
         row_2=row_2+1
@@ -468,3 +500,14 @@ T_PACE_html=T_PACE_html.replace('<th>Tool</th>','<th style="background-color: aq
 T_PACE_html=T_PACE_html.replace('<th>Tool</th>','<th style="background-color: aqua;">Model</th>')
 D_PACE_html=D_PACE_html.replace('<th>Tool</th>','<th style="background-color: aqua;">Tool</th>')
 D_PACE_html=D_PACE_html.replace('<th>Tool</th>','<th style="background-color: aqua;">Model</th>')
+
+
+#this week remark
+thisweek_html='<th style="text-align: center; background-color:rgb(238, 238, 238); padding:5px;">'+this_week+'</th>'
+thisweek_strong='<th style="text-align: center; background-color:rgb(192, 0, 0); color:white; padding:5px;">'+this_week+'</th>'
+F_BPAE_html=F_BPAE_html.replace(thisweek_html,thisweek_strong)
+T_BPAE_html=T_BPAE_html.replace(thisweek_html,thisweek_strong)
+D_BPAE_html=D_BPAE_html.replace(thisweek_html,thisweek_strong)
+F_PACE_html=F_PACE_html.replace(thisweek_html,thisweek_strong)
+T_PACE_html=T_PACE_html.replace(thisweek_html,thisweek_strong)
+D_PACE_html=D_PACE_html.replace(thisweek_html,thisweek_strong)

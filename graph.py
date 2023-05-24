@@ -31,12 +31,21 @@ for i in range(len(graph_column)):
     grap_list=graph_data[[i]]
     ax.plot(grap_list,linestyle='-',linewidth=1.0,label=graph_column[i],color=color_list[i]) # SVC
 # ax.set_title(graph_title,pad=0.2,loc='center',size="13",weight="800", family="sans-serif")
+
+#value display
+graph_data=graph_data.reset_index()
+for i in range(len(graph_data.index)):
+    ax.annotate(graph_data.at[i,0],xy=(graph_data.at[i,"index"],graph_data.at[i,0]), va='bottom', color='#4472C4',fontsize=9)
+    ax.annotate(graph_data.at[i,1],xy=(graph_data.at[i,"index"],graph_data.at[i,1]), va='bottom', color='#A5A5A5',fontsize=9)
+    ax.annotate(graph_data.at[i,2],xy=(graph_data.at[i,"index"],graph_data.at[i,2]), va='bottom', color='#70AD47',fontsize=9)
+    ax.annotate(graph_data.at[i,3],xy=(graph_data.at[i,"index"],graph_data.at[i,3]), va='top', color='#FFC000',fontsize=9)
+    ax.annotate(graph_data.at[i,4],xy=(graph_data.at[i,"index"],graph_data.at[i,4]), va='bottom', color='#ED7D31',fontsize=9)
+
 ax.yaxis.tick_right()
 ax.legend()
 #그림 저장
 plt.tight_layout()
 plt.savefig(save_path+file_name)
-
 
 ########################################## TL - BPA Entity ##########################################
 #change point
@@ -58,6 +67,17 @@ for i in range(len(graph_column)):
     grap_list=graph_data[[i]]
     ax.plot(grap_list,linestyle='-', label=graph_column[i],linewidth=1.0,color=color_list[i]) # SVC
 # ax.set_title(graph_title,pad=0.2,loc='center',size="13",weight="800", family="sans-serif")
+
+#value display
+graph_data=graph_data.reset_index()
+for i in range(len(graph_data.index)):
+    ax.annotate(graph_data.at[i,0],xy=(graph_data.at[i,"index"],graph_data.at[i,0]), va='bottom', color='#4472C4',fontsize=9)
+    ax.annotate(graph_data.at[i,1],xy=(graph_data.at[i,"index"],graph_data.at[i,1]), va='bottom', color='#A5A5A5',fontsize=9)
+    ax.annotate(graph_data.at[i,2],xy=(graph_data.at[i,"index"],graph_data.at[i,2]), va='bottom', color='#70AD47',fontsize=9)
+    ax.annotate(graph_data.at[i,3],xy=(graph_data.at[i,"index"],graph_data.at[i,3]), va='top', color='#FFC000',fontsize=9)
+    ax.annotate(graph_data.at[i,4],xy=(graph_data.at[i,"index"],graph_data.at[i,4]), va='top', color='#ED7D31',fontsize=9)
+    ax.annotate(graph_data.at[i,5],xy=(graph_data.at[i,"index"],graph_data.at[i,5]), va='bottom', color='#6600CC',fontsize=9)
+
 ax.yaxis.tick_right()
 ax.legend()
 #그림 저장
@@ -84,6 +104,18 @@ for i in range(len(graph_column)):
     grap_list=graph_data[[i]]
     ax.plot(grap_list,linestyle='-', label=graph_column[i],linewidth=1.0,color=color_list[i]) # SVC
 # ax.set_title(graph_title,pad=0.2,loc='center',size="13",weight="800", family="sans-serif")
+
+#value display
+graph_data=graph_data.reset_index()
+for i in range(len(graph_data.index)):
+    ax.annotate(graph_data.at[i,0],xy=(graph_data.at[i,"index"],graph_data.at[i,0]), va='bottom', color='#4472C4',fontsize=9)
+    ax.annotate(graph_data.at[i,1],xy=(graph_data.at[i,"index"],graph_data.at[i,1]), va='bottom', color='#A5A5A5',fontsize=9)
+    ax.annotate(graph_data.at[i,2],xy=(graph_data.at[i,"index"],graph_data.at[i,2]), va='bottom', color='#70AD47',fontsize=9)
+    ax.annotate(graph_data.at[i,3],xy=(graph_data.at[i,"index"],graph_data.at[i,3]), va='bottom', color='#FFC000',fontsize=9)
+    ax.annotate(graph_data.at[i,4],xy=(graph_data.at[i,"index"],graph_data.at[i,4]), va='bottom', color='#ED7D31',fontsize=9)
+    ax.annotate(graph_data.at[i,5],xy=(graph_data.at[i,"index"],graph_data.at[i,5]), va='bottom', color='#6600CC',fontsize=9)
+    ax.annotate(graph_data.at[i,6],xy=(graph_data.at[i,"index"],graph_data.at[i,6]), va='bottom', color='#FF66FF',fontsize=9)
+
 ax.yaxis.tick_right()
 ax.legend()
 #그림 저장
@@ -110,6 +142,16 @@ for i in range(len(graph_column)):
     grap_list=graph_data[[i]]
     ax.plot(grap_list,linestyle='-', label=graph_column[i],linewidth=1.0,color=color_list[i]) # SVC
 # ax.set_title(graph_title,pad=0.2,loc='center',size="13",weight="800", family="sans-serif")
+
+#value display
+graph_data=graph_data.reset_index()
+for i in range(len(graph_data.index)):
+    ax.annotate(graph_data.at[i,0],xy=(graph_data.at[i,"index"],graph_data.at[i,0]), va='bottom', color='#4472C4',fontsize=9)
+    ax.annotate(graph_data.at[i,1],xy=(graph_data.at[i,"index"],graph_data.at[i,1]), va='bottom', color='#A5A5A5',fontsize=9)
+    ax.annotate(graph_data.at[i,2],xy=(graph_data.at[i,"index"],graph_data.at[i,2]), va='bottom', color='#70AD47',fontsize=9)
+    ax.annotate(graph_data.at[i,3],xy=(graph_data.at[i,"index"],graph_data.at[i,3]), va='bottom', color='#FFC000',fontsize=9)
+    ax.annotate(graph_data.at[i,4],xy=(graph_data.at[i,"index"],graph_data.at[i,4]), va='bottom', color='#ED7D31',fontsize=9)
+
 ax.yaxis.tick_right()
 ax.legend()
 #그림 저장
@@ -136,6 +178,17 @@ for i in range(len(graph_column)):
     grap_list=graph_data[[i]]
     ax.plot(grap_list,linestyle='-', label=graph_column[i],linewidth=1.0,color=color_list[i]) # SVC
 # ax.set_title(graph_title,pad=0.2,loc='center',size="13",weight="800", family="sans-serif")
+
+#value display
+graph_data=graph_data.reset_index()
+for i in range(len(graph_data.index)):
+    ax.annotate(graph_data.at[i,0],xy=(graph_data.at[i,"index"],graph_data.at[i,0]), va='bottom', color='#4472C4',fontsize=9)
+    ax.annotate(graph_data.at[i,1],xy=(graph_data.at[i,"index"],graph_data.at[i,1]), va='bottom', color='#A5A5A5',fontsize=9)
+    ax.annotate(graph_data.at[i,2],xy=(graph_data.at[i,"index"],graph_data.at[i,2]), va='bottom', color='#70AD47',fontsize=9)
+    ax.annotate(graph_data.at[i,3],xy=(graph_data.at[i,"index"],graph_data.at[i,3]), va='bottom', color='#FFC000',fontsize=9)
+    ax.annotate(graph_data.at[i,4],xy=(graph_data.at[i,"index"],graph_data.at[i,4]), va='bottom', color='#ED7D31',fontsize=9)
+    ax.annotate(graph_data.at[i,5],xy=(graph_data.at[i,"index"],graph_data.at[i,5]), va='bottom', color='#6600CC',fontsize=9)
+
 ax.yaxis.tick_right()
 ax.legend()
 #그림 저장
@@ -162,6 +215,18 @@ for i in range(len(graph_column)):
     grap_list=graph_data[[i]]
     ax.plot(grap_list,linestyle='-', label=graph_column[i],linewidth=1.0,color=color_list[i]) # SVC
 # ax.set_title(graph_title,pad=0.2,loc='center',size="13",weight="800", family="sans-serif")
+
+#value display
+graph_data=graph_data.reset_index()
+for i in range(len(graph_data.index)):
+    ax.annotate(graph_data.at[i,0],xy=(graph_data.at[i,"index"],graph_data.at[i,0]), va='bottom', color='#4472C4',fontsize=9)
+    ax.annotate(graph_data.at[i,1],xy=(graph_data.at[i,"index"],graph_data.at[i,1]), va='bottom', color='#A5A5A5',fontsize=9)
+    ax.annotate(graph_data.at[i,2],xy=(graph_data.at[i,"index"],graph_data.at[i,2]), va='bottom', color='#70AD47',fontsize=9)
+    ax.annotate(graph_data.at[i,3],xy=(graph_data.at[i,"index"],graph_data.at[i,3]), va='bottom', color='#FFC000',fontsize=9)
+    ax.annotate(graph_data.at[i,4],xy=(graph_data.at[i,"index"],graph_data.at[i,4]), va='bottom', color='#ED7D31',fontsize=9)
+    ax.annotate(graph_data.at[i,5],xy=(graph_data.at[i,"index"],graph_data.at[i,5]), va='bottom', color='#6600CC',fontsize=9)
+    ax.annotate(graph_data.at[i,6],xy=(graph_data.at[i,"index"],graph_data.at[i,6]), va='bottom', color='#FF66FF',fontsize=9)
+
 ax.yaxis.tick_right()
 ax.legend()
 #그림 저장
