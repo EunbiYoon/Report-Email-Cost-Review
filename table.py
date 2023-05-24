@@ -74,56 +74,50 @@ D_PACE_Merge.index=range(1,len(D_PACE_Merge)+1)
 
 ############################ Item Table ############################  
 #data read
-F_PAC_I=pd.read_excel("C:/Users/RnD Workstation/Documents/CostReview/0526/data.xlsx", sheet_name="FL_PAC_Item")
-F_PAC_I2=pd.read_excel("C:/Users/RnD Workstation/Documents/CostReview/0526/data.xlsx", sheet_name="FL_PAC_Item2")
-D_PAC_I=pd.read_excel("C:/Users/RnD Workstation/Documents/CostReview/0526/data.xlsx", sheet_name="DR_PAC_Item")
-D_PAC_I2=pd.read_excel("C:/Users/RnD Workstation/Documents/CostReview/0526/data.xlsx", sheet_name="DR_PAC_Item2")
-T_PAC_I=pd.read_excel("C:/Users/RnD Workstation/Documents/CostReview/0526/data.xlsx", sheet_name="TL_PAC_Item")
-T_PAC_I2=pd.read_excel("C:/Users/RnD Workstation/Documents/CostReview/0526/data.xlsx", sheet_name="TL_PAC_Item2")
 F_BPA_I=pd.read_excel("C:/Users/RnD Workstation/Documents/CostReview/0526/data.xlsx", sheet_name="BPA FL")
 D_BPA_I=pd.read_excel("C:/Users/RnD Workstation/Documents/CostReview/0526/data.xlsx", sheet_name="BPA Dryer")
 T_BPA_I=pd.read_excel("C:/Users/RnD Workstation/Documents/CostReview/0526/data.xlsx", sheet_name="BPA TL")
 
+F_PAC_I=pd.read_excel("C:/Users/RnD Workstation/Documents/CostReview/0526/data.xlsx", sheet_name="FL_PAC_Item2")
+D_PAC_I=pd.read_excel("C:/Users/RnD Workstation/Documents/CostReview/0526/data.xlsx", sheet_name="DR_PAC_Item2")
+T_PAC_I=pd.read_excel("C:/Users/RnD Workstation/Documents/CostReview/0526/data.xlsx", sheet_name="TL_PAC_Item")
+
+
 #data required
 F_BPA_I=F_BPA_I.drop([0],axis=0)
-F_BPA_I=F_BPA_I[['[Left] Model/PartNo.4','Gap.1']]
-F_BPA_I=F_BPA_I[2:].reset_index()
+F_BPA_I=F_BPA_I[['[Left] Model/PartNo.3','[Left] Model/PartNo.4','Gap','Gap.1']]
+F_BPA_I=F_BPA_I.dropna()
+F_BPA_I.reset_index(drop=True, inplace=True)
 
 D_BPA_I=D_BPA_I.drop([0],axis=0)
-D_BPA_I=D_BPA_I[['[Left] Model/PartNo.4','Gap.1']]
-D_BPA_I=D_BPA_I[2:].reset_index()
+D_BPA_I=D_BPA_I[['[Left] Model/PartNo.3','[Left] Model/PartNo.4','Gap','Gap.1']]
+D_BPA_I=D_BPA_I.dropna()
+D_BPA_I.reset_index(drop=True, inplace=True)
 
 T_BPA_I=T_BPA_I.drop([0],axis=0)
-T_BPA_I=T_BPA_I[['[Left] Model/PartNo.4','Gap.1']]
-T_BPA_I=T_BPA_I[2:].reset_index()
-
+T_BPA_I=T_BPA_I[['[Left] Model/PartNo.3','[Left] Model/PartNo.4','Gap','Gap.1']]
+T_BPA_I=T_BPA_I.dropna()
+T_BPA_I.reset_index(drop=True, inplace=True)
 
 F_PAC_I=F_PAC_I.drop([0],axis=0)
-F_PAC_I=F_PAC_I[['[Left] Model/PartNo.4','Gap.1']]
-F_PAC_I=F_PAC_I[2:].reset_index()
-
-F_PAC_I2=F_PAC_I2.drop([0],axis=0)
-F_PAC_I2=F_PAC_I2[['[Left] Model/PartNo.4','Gap.1']]
-F_PAC_I2=F_PAC_I2[2:].reset_index()
+F_PAC_I=F_PAC_I[['[Left] Model/PartNo.3','[Left] Model/PartNo.4','Gap','Gap.1']]
+F_PAC_I=F_PAC_I.dropna()
+F_PAC_I.reset_index(drop=True, inplace=True)
 
 D_PAC_I=D_PAC_I.drop([0],axis=0)
-D_PAC_I=D_PAC_I[['[Left] Model/PartNo.4','Gap.1']]
-D_PAC_I=D_PAC_I[2:].reset_index()
-
-D_PAC_I2=D_PAC_I2.drop([0],axis=0)
-D_PAC_I2=D_PAC_I2[['[Left] Model/PartNo.4','Gap.1']]
-D_PAC_I2=D_PAC_I2[2:].reset_index()
+D_PAC_I=D_PAC_I[['[Left] Model/PartNo.3','[Left] Model/PartNo.4','Gap','Gap.1']]
+D_PAC_I=D_PAC_I.dropna()
+D_PAC_I.reset_index(drop=True, inplace=True)
 
 T_PAC_I=T_PAC_I.drop([0],axis=0)
-T_PAC_I=T_PAC_I[['[Left] Model/PartNo.4','Gap.1']]
-T_PAC_I=T_PAC_I[2:].reset_index()
+T_PAC_I=T_PAC_I[['[Left] Model/PartNo.3','[Left] Model/PartNo.4','Gap','Gap.1']]
+T_PAC_I=T_PAC_I.dropna()
+T_PAC_I.reset_index(drop=True, inplace=True)
 
-T_PAC_I2=T_PAC_I2.drop([0],axis=0)
-T_PAC_I2=T_PAC_I2[['[Left] Model/PartNo.4','Gap.1']]
-T_PAC_I2=T_PAC_I2[2:].reset_index()
+# part number same merge
+print(T_PAC_I)
 
-
-# 0.5 over sort
+#sort top 5
 FBI=pd.DataFrame()
 DBI=pd.DataFrame()
 TBI=pd.DataFrame()
@@ -131,80 +125,43 @@ FPI=pd.DataFrame()
 DPI=pd.DataFrame()
 TPI=pd.DataFrame()
 
-for i in range(len(F_BPA_I)):
-    condition=abs(F_BPA_I.at[i,'Gap.1'])
-    if condition>=0.5:
-        FBI.at[i,"Desc"]=F_BPA_I.at[i,'[Left] Model/PartNo.4']
-        FBI.at[i,"VI"]=F_BPA_I.at[i,'Gap.1']
-
-for i in range(len(D_BPA_I)):
-    condition=abs(D_BPA_I.at[i,'Gap.1'])
-    if condition>=0.5:
-        DBI.at[i,"Desc"]=D_BPA_I.at[i,'[Left] Model/PartNo.4']
-        DBI.at[i,"VI"]=D_BPA_I.at[i,'Gap.1']
-
-for i in range(len(T_BPA_I)):
-    condition=abs(T_BPA_I.at[i,'Gap.1'])
-    if condition>=0.5:
-        TBI.at[i,"Desc"]=T_BPA_I.at[i,'[Left] Model/PartNo.4']
-        TBI.at[i,"VI"]=T_BPA_I.at[i,'Gap.1']
-
-
-# for i in range(len(F_PAC_I)):
-#     condition=abs(F_PAC_I.at[i,'Gap.1'])
-#     if condition>=0.5:
-#         FPI.at[i,"Desc"]=F_PAC_I.at[i,'[Left] Model/PartNo.4']
-#         FPI.at[i,"VI"]=F_PAC_I.at[i,'Gap.1']
-# FPI_acc=len(FPI)-1
-for i in range(len(F_PAC_I2)):
-    condition=abs(F_PAC_I2.at[i,'Gap.1'])
-    if condition>=0.5:
-        FPI.at[i,"Desc"]=F_PAC_I.at[i,'[Left] Model/PartNo.4']
-        FPI.at[i,"VI"]=F_PAC_I.at[i,'Gap.1']
-
-# for i in range(len(D_PAC_I)):
-#     condition=abs(D_PAC_I.at[i,'Gap.1'])
-#     if condition>=0.5:
-#         DPI.at[i,"Desc"]=D_PAC_I.at[i,'[Left] Model/PartNo.4']
-#         DPI.at[i,"VI"]=D_PAC_I.at[i,'Gap.1']
-# DPI_acc=len(DPI)-1
-for i in range(len(D_PAC_I2)):
-    condition=abs(D_PAC_I2.at[i,'Gap.1'])
-    if condition>=0.5:
-        DPI.at[i,"Desc"]=D_PAC_I2.at[i,'[Left] Model/PartNo.4']
-        DPI.at[i,"VI"]=D_PAC_I2.at[i,'Gap.1']
-
-for i in range(len(T_PAC_I)):
-    condition=abs(T_PAC_I.at[i,'Gap.1'])
-    if condition>=0.5:
-        TPI.at[i,"Desc"]=T_PAC_I.at[i,'[Left] Model/PartNo.4']
-        TPI.at[i,"VI"]=T_PAC_I.at[i,'Gap.1']
-# TPI_acc=len(TPI)-1
-# for i in range(len(T_PAC_I2)):
-#     condition=abs(T_PAC_I2.at[i,'Gap.1'])
-#     if condition>=0.5:
-#         TPI.at[i,"Desc"]=T_PAC_I2.at[i,'[Left] Model/PartNo.4']
-#         TPI.at[i,"VI"]=T_PAC_I2.at[i,'Gap.1']
-
-# descend sort
-FBI.sort_values(by="VI", ascending=True)
+F_BPA_I["abs_gap.1"]=abs(F_BPA_I['Gap.1'])
+FBI=F_BPA_I.sort_values(by='abs_gap.1', ascending=False)
 FBI=FBI.reset_index()
-FBI=FBI[:3]
-TBI.sort_values(by="VI", ascending=True)
-TBI=TBI.reset_index()
-TBI=TBI[:3]
-DBI.sort_values(by="VI", ascending=True)
+FBI=FBI[:5]
+
+D_BPA_I["abs_gap.1"]=abs(D_BPA_I['Gap.1'])
+DBI=D_BPA_I.sort_values(by='abs_gap.1', ascending=False)
 DBI=DBI.reset_index()
-DBI=DBI[:3]
-FPI.sort_values(by="VI", ascending=True)
+DBI=DBI[:5]
+
+T_BPA_I["abs_gap.1"]=abs(T_BPA_I['Gap.1'])
+TBI=T_BPA_I.sort_values(by='abs_gap.1', ascending=False)
+TBI=TBI.reset_index()
+TBI=TBI[:5]
+
+F_PAC_I["abs_gap.1"]=abs(F_PAC_I['Gap.1'])
+FPI=F_PAC_I.sort_values(by='abs_gap.1', ascending=False)
 FPI=FPI.reset_index()
-FPI=FPI[:3]
-TPI.sort_values(by="VI", ascending=True)
-TPI=TPI.reset_index()
-TPI=TPI[:3]
-DPI.sort_values(by="VI", ascending=True)
+FPI=FPI[:5]
+
+D_PAC_I["abs_gap.1"]=abs(D_PAC_I['Gap.1'])
+DPI=D_PAC_I.sort_values(by='abs_gap.1', ascending=False)
 DPI=DPI.reset_index()
-DPI=DPI[:3]
+DPI=DPI[:5]
+
+T_PAC_I["abs_gap.1"]=abs(T_PAC_I['Gap.1'])
+TPI=T_PAC_I.sort_values(by='abs_gap.1', ascending=False)
+TPI=TPI.reset_index()
+TPI=TPI[:5]
+
+print(FBI)
+print(TBI)
+print(DBI)
+print(FPI)
+print(TPI)
+print(DPI)
+
 
 # read previous report and merge
 FBI_P=pd.read_excel("C:/Users/RnD Workstation/Documents/CostReview/0519/Cost Review_0519.xlsx", sheet_name="FL_BPA_Item")
